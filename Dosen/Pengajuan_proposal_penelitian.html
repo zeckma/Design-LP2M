@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pengajuan Proposal Penelitian - SIPPM STIESIA</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background: #f5f7fb;
+    color: #1e293b;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 260px;
+    height: 100vh;
+    background: #062b5c;
+    color: white;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 22px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: white;
+    color: #062b5c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
+
+.logo-text h3 {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.logo-text span {
+    display: block;
+    font-size: 9px;
+    color: rgba(255,255,255,.6);
+    margin-top: 3px;
+}
+
+.sidebar-menu {
+    padding: 20px 13px;
+}
+
+.menu-title {
+    padding: 0 12px;
+    margin: 18px 0 8px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,.4);
+}
+
+.menu-item {
+    list-style: none;
+    margin-bottom: 4px;
+}
+
+.menu-link {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    height: 45px;
+    padding: 0 13px;
+    color: rgba(255,255,255,.72);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.menu-link:hover {
+    background: rgba(255,255,255,.08);
+    color: white;
+}
+
+.menu-link.active {
+    background: #2563eb;
+    color: white;
+}
+
+.submenu {
+    display: block;
+    padding-left: 45px;
+}
+
+.submenu a {
+    display: block;
+    padding: 9px 10px;
+    color: rgba(255,255,255,.6);
+    text-decoration: none;
+    font-size: 11px;
+    border-radius: 6px;
+}
+
+.submenu a.active {
+    color: white;
+    background: rgba(255,255,255,.08);
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    background: rgba(0,0,0,.1);
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar {
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    background: #dbeafe;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.user-info strong {
+    display: block;
+    font-size: 11px;
+}
+
+.user-info span {
+    display: block;
+    font-size: 9px;
+    color: rgba(255,255,255,.5);
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.main {
+    margin-left: 260px;
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   TOPBAR
+===================================================== */
+
+.topbar {
+    height: 80px;
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.toggle-sidebar {
+    width: 38px;
+    height: 38px;
+    border: 1px solid #e5e7eb;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.page-title h2 {
+    font-size: 18px;
+}
+
+.page-title span {
+    display: block;
+    font-size: 10px;
+    color: #94a3b8;
+    margin-top: 4px;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.notification {
+    width: 38px;
+    height: 38px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.notification-badge {
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: #ef4444;
+    color: white;
+    font-size: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.top-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #dbeafe;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.top-user-info strong {
+    display: block;
+    font-size: 11px;
+}
+
+.top-user-info span {
+    font-size: 9px;
+    color: #94a3b8;
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.content {
+    padding: 30px;
+}
+
+.page-header {
+    margin-bottom: 25px;
+}
+
+.page-header h1 {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.page-header p {
+    font-size: 11px;
+    color: #64748b;
+}
+
+
+/* =====================================================
+   STEPPER
+===================================================== */
+
+.stepper-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.stepper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+}
+
+.step {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+}
+
+.step-circle {
+    width: 38px;
+    height: 38px;
+    margin: auto;
+    border-radius: 50%;
+    background: #e2e8f0;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.step.active .step-circle {
+    background: #2563eb;
+    color: white;
+}
+
+.step.completed .step-circle {
+    background: #16a34a;
+    color: white;
+}
+
+.step-title {
+    margin-top: 9px;
+    font-size: 9px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.step.active .step-title {
+    color: #2563eb;
+}
+
+.step-line {
+    position: absolute;
+    top: 19px;
+    left: 7%;
+    right: 7%;
+    height: 2px;
+    background: #e2e8f0;
+    z-index: 1;
+}
+
+
+/* =====================================================
+   FORM CARD
+===================================================== */
+
+.form-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.form-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid #eef0f3;
+}
+
+.form-header h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.form-header p {
+    font-size: 10px;
+    color: #94a3b8;
+}
+
+.form-body {
+    padding: 25px;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 7px;
+}
+
+.required {
+    color: #ef4444;
+}
+
+.form-control {
+    width: 100%;
+    height: 42px;
+    border: 1px solid #dbe2ea;
+    border-radius: 7px;
+    padding: 0 12px;
+    font-size: 11px;
+    color: #334155;
+    outline: none;
+    background: white;
+}
+
+textarea.form-control {
+    height: 110px;
+    padding: 12px;
+    resize: vertical;
+}
+
+.form-control:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,.08);
+}
+
+.help-text {
+    font-size: 9px;
+    color: #94a3b8;
+    margin-top: 5px;
+}
+
+
+/* =====================================================
+   UPLOAD
+===================================================== */
+
+.upload-box {
+    border: 2px dashed #cbd5e1;
+    border-radius: 10px;
+    padding: 28px;
+    text-align: center;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.upload-box:hover {
+    border-color: #2563eb;
+    background: #f8fbff;
+}
+
+.upload-box i {
+    font-size: 30px;
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+.upload-box strong {
+    display: block;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+.upload-box span {
+    font-size: 9px;
+    color: #94a3b8;
+}
+
+
+/* =====================================================
+   FOOTER FORM
+===================================================== */
+
+.form-footer {
+    padding: 18px 25px;
+    background: #f8fafc;
+    border-top: 1px solid #eef0f3;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    height: 40px;
+    padding: 0 17px;
+    border-radius: 7px;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-secondary {
+    background: white;
+    color: #475569;
+    border: 1px solid #dbe2ea;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: white;
+}
+
+.btn-success {
+    background: #16a34a;
+    color: white;
+}
+
+
+/* =====================================================
+   STEP CONTENT
+===================================================== */
+
+.step-content {
+    display: none;
+}
+
+.step-content.active {
+    display: block;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width: 900px) {
+
+    .sidebar {
+        transform: translateX(-100%);
+        transition: .3s;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .main {
+        margin-left: 0;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width: 600px) {
+
+    .content {
+        padding: 18px;
+    }
+
+    .top-user-info {
+        display: none;
+    }
+
+    .step-title {
+        display: none;
+    }
+
+    .step-circle {
+        width: 34px;
+        height: 34px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-header">
+
+        <div class="logo-icon">
+            <i class="fa-solid fa-building-columns"></i>
+        </div>
+
+        <div class="logo-text">
+            <h3>SIPPM STIESIA</h3>
+            <span>Sistem Penelitian & Pengabdian</span>
+        </div>
+
+    </div>
+
+
+    <ul class="sidebar-menu">
+
+        <div class="menu-title">
+            MENU UTAMA
+        </div>
+
+        <li class="menu-item">
+
+            <a href="dashboard.html" class="menu-link">
+
+                <i class="fa-solid fa-gauge-high"></i>
+
+                Dashboard
+
+            </a>
+
+        </li>
+
+
+        <li class="menu-item">
+
+            <a href="penelitian.html" class="menu-link active">
+
+                <i class="fa-solid fa-flask"></i>
+
+                Penelitian
+
+            </a>
+
+
+            <div class="submenu">
+
+                <a href="penelitian.html">
+                    Daftar Penelitian
+                </a>
+
+                <a href="#" class="active">
+                    Pengajuan Proposal
+                </a>
+
+                <a href="#">
+                    Penelitian Berjalan
+                </a>
+
+                <a href="#">
+                    Laporan Kemajuan
+                </a>
+
+                <a href="#">
+                    Laporan Akhir
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <li class="menu-item">
+
+            <a href="#" class="menu-link">
+
+                <i class="fa-solid fa-hand-holding-heart"></i>
+
+                Pengabdian
+
+            </a>
+
+        </li>
+
+
+        <li class="menu-item">
+
+            <a href="#" class="menu-link">
+
+                <i class="fa-solid fa-award"></i>
+
+                Luaran
+
+            </a>
+
+        </li>
+
+
+        <div class="menu-title">
+            MONITORING
+        </div>
+
+        <li class="menu-item">
+
+            <a href="#" class="menu-link">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                Monitoring & Evaluasi
+
+            </a>
+
+        </li>
+
+
+        <li class="menu-item">
+
+            <a href="#" class="menu-link">
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                Laporan
+
+            </a>
+
+        </li>
+
+
+        <div class="menu-title">
+            SISTEM
+        </div>
+
+        <li class="menu-item">
+
+            <a href="#" class="menu-link">
+
+                <i class="fa-solid fa-user"></i>
+
+                Profil Saya
+
+            </a>
+
+        </li>
+
+        <li class="menu-item">
+
+            <a href="#" class="menu-link">
+
+                <i class="fa-solid fa-gear"></i>
+
+                Pengaturan
+
+            </a>
+
+        </li>
+
+        <li class="menu-item">
+
+            <a href="sso-login.html" class="menu-link">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Keluar
+
+            </a>
+
+        </li>
+
+    </ul>
+
+
+    <div class="sidebar-footer">
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                RF
+            </div>
+
+            <div class="user-info">
+
+                <strong>Riza Nidhom Fahmi</strong>
+
+                <span>Dosen / Peneliti</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <button
+                class="toggle-sidebar"
+                onclick="toggleSidebar()">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+            <div class="page-title">
+
+                <h2>
+                    Pengajuan Proposal Penelitian
+                </h2>
+
+                <span>
+                    SIPPM STIESIA
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <div class="notification">
+
+                <i class="fa-regular fa-bell"></i>
+
+                <span class="notification-badge">
+                    3
+                </span>
+
+            </div>
+
+
+            <div class="top-user">
+
+                <div class="top-avatar">
+                    RF
+                </div>
+
+                <div class="top-user-info">
+
+                    <strong>
+                        Riza Nidhom Fahmi
+                    </strong>
+
+                    <span>
+                        Dosen / Peneliti
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <section class="content">
+
+
+        <div class="page-header">
+
+            <h1>
+                Pengajuan Proposal Penelitian
+            </h1>
+
+            <p>
+                Lengkapi data penelitian sebelum proposal diajukan.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             STEPPER
+        ================================================== -->
+
+        <div class="stepper-card">
+
+            <div class="stepper">
+
+                <div class="step-line"></div>
+
+
+                <div class="step active">
+
+                    <div class="step-circle">
+                        1
+                    </div>
+
+                    <div class="step-title">
+                        Identitas
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-circle">
+                        2
+                    </div>
+
+                    <div class="step-title">
+                        Tim Peneliti
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-circle">
+                        3
+                    </div>
+
+                    <div class="step-title">
+                        Substansi
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-circle">
+                        4
+                    </div>
+
+                    <div class="step-title">
+                        Luaran
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-circle">
+                        5
+                    </div>
+
+                    <div class="step-title">
+                        Dokumen
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-circle">
+                        6
+                    </div>
+
+                    <div class="step-title">
+                        Submit
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             FORM
+        ================================================== -->
+
+        <div class="form-card">
+
+
+            <div class="form-header">
+
+                <h3 id="formTitle">
+                    Identitas Penelitian
+                </h3>
+
+                <p id="formDescription">
+                    Masukkan informasi dasar proposal penelitian.
+                </p>
+
+            </div>
+
+
+            <div class="form-body">
+
+
+                <!-- =========================================
+                     STEP 1
+                ========================================== -->
+
+                <div class="step-content active">
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group full">
+
+                            <label>
+                                Judul Penelitian
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Masukkan judul penelitian">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Skema Penelitian
+                                <span class="required">*</span>
+                            </label>
+
+                            <select class="form-control">
+
+                                <option>
+                                    Pilih Skema
+                                </option>
+
+                                <option>
+                                    Penelitian Internal
+                                </option>
+
+                                <option>
+                                    Penelitian Dosen Pemula
+                                </option>
+
+                                <option>
+                                    Penelitian Fundamental
+                                </option>
+
+                                <option>
+                                    Penelitian Kerja Sama
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Tahun Pelaksanaan
+                                <span class="required">*</span>
+                            </label>
+
+                            <select class="form-control">
+
+                                <option>2026</option>
+                                <option>2027</option>
+                                <option>2028</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Program Studi
+                            </label>
+
+                            <select class="form-control">
+
+                                <option>
+                                    Sistem Informasi
+                                </option>
+
+                                <option>
+                                    Akuntansi
+                                </option>
+
+                                <option>
+                                    Manajemen
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Lama Penelitian
+                            </label>
+
+                            <select class="form-control">
+
+                                <option>
+                                    6 Bulan
+                                </option>
+
+                                <option>
+                                    12 Bulan
+                                </option>
+
+                                <option>
+                                    18 Bulan
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Total Dana
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Rp 0">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Bidang Fokus
+                            </label>
+
+                            <select class="form-control">
+
+                                <option>
+                                    Teknologi Informasi
+                                </option>
+
+                                <option>
+                                    Ekonomi
+                                </option>
+
+                                <option>
+                                    Manajemen
+                                </option>
+
+                                <option>
+                                    Akuntansi
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     STEP 2
+                ========================================== -->
+
+                <div class="step-content">
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group full">
+
+                            <label>
+                                Ketua Peneliti
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                value="Riza Nidhom Fahmi"
+                                readonly>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Anggota Peneliti 1
+                            </label>
+
+                            <select class="form-control">
+
+                                <option>
+                                    Pilih Dosen
+                                </option>
+
+                                <option>
+                                    Dr. Ahmad Setiawan
+                                </option>
+
+                                <option>
+                                    Dr. Budi Santoso
+                                </option>
+
+                                <option>
+                                    Siti Rahma, M.M.
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Anggota Peneliti 2
+                            </label>
+
+                            <select class="form-control">
+
+                                <option>
+                                    Pilih Dosen
+                                </option>
+
+                                <option>
+                                    Dr. Ahmad Setiawan
+                                </option>
+
+                                <option>
+                                    Dr. Budi Santoso
+                                </option>
+
+                                <option>
+                                    Siti Rahma, M.M.
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label>
+                                Mahasiswa yang Terlibat
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Nama / NIM mahasiswa">
+
+                            <div class="help-text">
+                                Pisahkan dengan tanda koma jika lebih dari satu mahasiswa.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     STEP 3
+                ========================================== -->
+
+                <div class="step-content">
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group full">
+
+                            <label>
+                                Ringkasan Penelitian
+                                <span class="required">*</span>
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                placeholder="Tuliskan ringkasan penelitian..."></textarea>
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label>
+                                Latar Belakang
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                placeholder="Tuliskan latar belakang penelitian..."></textarea>
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label>
+                                Tujuan Penelitian
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                placeholder="Tuliskan tujuan penelitian..."></textarea>
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label>
+                                Metode Penelitian
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                placeholder="Jelaskan metode penelitian..."></textarea>
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label>
+                                Kata Kunci
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Contoh: Artificial Intelligence, UMKM, Sistem Informasi">
+
+                            <div class="help-text">
+                                Maksimal 5 kata kunci.
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     STEP 4
+                ========================================== -->
+
+                <div class="step-content">
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Luaran Wajib
+                                <span class="required">*</span>
+                            </label>
+
+                            <select class="form-control">
+
+                                <option>
+                                    Pilih Luaran
+                                </option>
+
+                                <option>
+                                    Artikel Jurnal
+                                </option>
+
+                                <option>
+                                    Prosiding
+                                </option>
+
+                                <option>
+                                    HKI
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Target Tahun
+                            </label>
+
+                            <select class="form-control">
+
+                                <option>
+                                    2026
+                                </option>
+
+                                <option>
+                                    2027
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label>
+                                Luaran Tambahan
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                placeholder="Contoh: Buku, modul, prototype, dataset, HKI, dll."></textarea>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     STEP 5
+                ========================================== -->
+
+                <div class="step-content">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Upload Proposal
+                            <span class="required">*</span>
+                        </label>
+
+
+                        <div
+                            class="upload-box"
+                            onclick="document.getElementById('proposal').click()">
+
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                            <strong>
+                                Klik untuk upload proposal
+                            </strong>
+
+                            <span>
+                                PDF maksimal 10 MB
+                            </span>
+
+                            <input
+                                type="file"
+                                id="proposal"
+                                accept=".pdf"
+                                hidden>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Upload RAB
+                        </label>
+
+
+                        <div
+                            class="upload-box"
+                            onclick="document.getElementById('rab').click()">
+
+                            <i class="fa-solid fa-file-invoice-dollar"></i>
+
+                            <strong>
+                                Upload RAB Penelitian
+                            </strong>
+
+                            <span>
+                                PDF / Excel maksimal 10 MB
+                            </span>
+
+                            <input
+                                type="file"
+                                id="rab"
+                                accept=".pdf,.xls,.xlsx"
+                                hidden>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =========================================
+                     STEP 6
+                ========================================== -->
+
+                <div class="step-content">
+
+
+                    <div style="
+                        background:#f0fdf4;
+                        border:1px solid #bbf7d0;
+                        padding:20px;
+                        border-radius:10px;
+                        margin-bottom:20px;
+                    ">
+
+                        <strong style="
+                            display:block;
+                            color:#166534;
+                            font-size:12px;
+                            margin-bottom:7px;
+                        ">
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            Proposal siap diajukan
+
+                        </strong>
+
+
+                        <p style="
+                            font-size:10px;
+                            color:#166534;
+                            line-height:1.6;
+                        ">
+
+                            Pastikan seluruh data dan dokumen
+                            proposal telah diperiksa sebelum
+                            menekan tombol "Ajukan Proposal".
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Pernyataan
+                        </label>
+
+                        <label style="
+                            display:flex;
+                            gap:8px;
+                            align-items:flex-start;
+                            font-size:10px;
+                            font-weight:400;
+                            line-height:1.6;
+                        ">
+
+                            <input type="checkbox">
+
+                            Saya menyatakan bahwa data dan dokumen
+                            proposal penelitian yang diajukan adalah
+                            benar dan dapat dipertanggungjawabkan.
+
+                        </label>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- FORM FOOTER -->
+
+            <div class="form-footer">
+
+                <button
+                    class="btn btn-secondary"
+                    id="prevBtn"
+                    onclick="prevStep()"
+                    disabled>
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Sebelumnya
+
+                </button>
+
+
+                <div style="display:flex; gap:8px;">
+
+                    <button
+                        class="btn btn-secondary"
+                        onclick="saveDraft()">
+
+                        <i class="fa-regular fa-floppy-disk"></i>
+
+                        Simpan Draft
+
+                    </button>
+
+
+                    <button
+                        class="btn btn-primary"
+                        id="nextBtn"
+                        onclick="nextStep()">
+
+                        Selanjutnya
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+
+<script>
+
+let currentStep = 0;
+
+const steps =
+    document.querySelectorAll(".step");
+
+const contents =
+    document.querySelectorAll(".step-content");
+
+const nextBtn =
+    document.getElementById("nextBtn");
+
+const prevBtn =
+    document.getElementById("prevBtn");
+
+
+const titles = [
+
+    "Identitas Penelitian",
+
+    "Tim Peneliti",
+
+    "Substansi Penelitian",
+
+    "Luaran Penelitian",
+
+    "Dokumen Penelitian",
+
+    "Review & Submit"
+
+];
+
+
+const descriptions = [
+
+    "Masukkan informasi dasar proposal penelitian.",
+
+    "Tentukan ketua dan anggota tim penelitian.",
+
+    "Lengkapi substansi dan metode penelitian.",
+
+    "Tentukan target luaran penelitian.",
+
+    "Upload dokumen pendukung proposal.",
+
+    "Periksa kembali proposal sebelum dikirim."
+
+];
+
+
+function updateStep() {
+
+    contents.forEach(function(content, index) {
+
+        content.classList.toggle(
+            "active",
+            index === currentStep
+        );
+
+    });
+
+
+    steps.forEach(function(step, index) {
+
+        step.classList.remove(
+            "active",
+            "completed"
+        );
+
+
+        if(index < currentStep) {
+
+            step.classList.add("completed");
+
+            step.querySelector(
+                ".step-circle"
+            ).innerHTML =
+                '<i class="fa-solid fa-check"></i>';
+
+        }
+
+
+        else if(index === currentStep) {
+
+            step.classList.add("active");
+
+            step.querySelector(
+                ".step-circle"
+            ).innerHTML =
+                index + 1;
+
+        }
+
+
+        else {
+
+            step.querySelector(
+                ".step-circle"
+            ).innerHTML =
+                index + 1;
+
+        }
+
+    });
+
+
+    document.getElementById(
+        "formTitle"
+    ).innerText =
+        titles[currentStep];
+
+
+    document.getElementById(
+        "formDescription"
+    ).innerText =
+        descriptions[currentStep];
+
+
+    prevBtn.disabled =
+        currentStep === 0;
+
+
+    if(currentStep === steps.length - 1) {
+
+        nextBtn.innerHTML =
+            '<i class="fa-solid fa-paper-plane"></i> Ajukan Proposal';
+
+        nextBtn.classList.remove("btn-primary");
+
+        nextBtn.classList.add("btn-success");
+
+    }
+
+    else {
+
+        nextBtn.innerHTML =
+            'Selanjutnya <i class="fa-solid fa-arrow-right"></i>';
+
+        nextBtn.classList.remove("btn-success");
+
+        nextBtn.classList.add("btn-primary");
+
+    }
+
+}
+
+
+function nextStep() {
+
+    if(currentStep < steps.length - 1) {
+
+        currentStep++;
+
+        updateStep();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+    else {
+
+        submitProposal();
+
+    }
+
+}
+
+
+function prevStep() {
+
+    if(currentStep > 0) {
+
+        currentStep--;
+
+        updateStep();
+
+    }
+
+}
+
+
+function saveDraft() {
+
+    alert(
+        "Proposal berhasil disimpan sebagai draft."
+    );
+
+}
+
+
+function submitProposal() {
+
+    const confirmation =
+        confirm(
+            "Apakah Anda yakin ingin mengajukan proposal penelitian?"
+        );
+
+    if(confirmation) {
+
+        alert(
+            "Proposal berhasil diajukan dan menunggu proses review."
+        );
+
+    }
+
+}
+
+
+function toggleSidebar() {
+
+    document
+        .getElementById("sidebar")
+        .classList.toggle("open");
+
+}
+
+
+updateStep();
+
+</script>
+
+
+</body>
+</html>

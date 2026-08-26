@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Penelitian - SIPPM STIESIA</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #1e293b;
+        }
+
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 260px;
+            height: 100vh;
+            background: #062b5c;
+            color: white;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+
+        .sidebar-header {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            padding: 0 22px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: white;
+            color: #062b5c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+            margin-right: 12px;
+        }
+
+
+        .logo-text h3 {
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+
+        .logo-text span {
+            display: block;
+            font-size: 9px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 3px;
+        }
+
+
+        .sidebar-menu {
+            padding: 20px 13px;
+        }
+
+
+        .menu-title {
+            padding: 0 12px;
+            margin: 18px 0 8px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.4);
+        }
+
+
+        .menu-item {
+            list-style: none;
+            margin-bottom: 4px;
+        }
+
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            height: 45px;
+            padding: 0 13px;
+            color: rgba(255,255,255,0.72);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+
+        .menu-link i {
+            width: 20px;
+            text-align: center;
+        }
+
+
+        .menu-link:hover {
+            background: rgba(255,255,255,0.08);
+            color: white;
+        }
+
+
+        .menu-link.active {
+            background: #2563eb;
+            color: white;
+        }
+
+
+        .submenu {
+            display: block;
+            padding-left: 45px;
+        }
+
+
+        .submenu a {
+            display: block;
+            padding: 9px 10px;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 11px;
+            border-radius: 6px;
+        }
+
+
+        .submenu a:hover,
+        .submenu a.active {
+            background: rgba(255,255,255,0.08);
+            color: white;
+        }
+
+
+        .sidebar-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: rgba(0,0,0,0.1);
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+
+        .sidebar-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .user-avatar {
+            width: 37px;
+            height: 37px;
+            border-radius: 50%;
+            background: #dbeafe;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+
+        .user-info strong {
+            display: block;
+            color: white;
+            font-size: 11px;
+        }
+
+
+        .user-info span {
+            display: block;
+            color: rgba(255,255,255,0.5);
+            font-size: 9px;
+            margin-top: 3px;
+        }
+
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        .main {
+            margin-left: 260px;
+            min-height: 100vh;
+        }
+
+
+        /* =====================================================
+           TOPBAR
+        ===================================================== */
+
+        .topbar {
+            height: 80px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+
+
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+
+        .toggle-sidebar {
+            width: 38px;
+            height: 38px;
+            border: 1px solid #e5e7eb;
+            background: white;
+            border-radius: 8px;
+            color: #475569;
+            cursor: pointer;
+        }
+
+
+        .page-title h2 {
+            font-size: 18px;
+            color: #0f172a;
+        }
+
+
+        .page-title span {
+            display: block;
+            font-size: 10px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+
+        .notification {
+            position: relative;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            color: #64748b;
+        }
+
+
+        .notification-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 17px;
+            height: 17px;
+            background: #ef4444;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+        }
+
+
+        .top-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .top-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #dbeafe;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+
+        .top-user-info strong {
+            display: block;
+            font-size: 11px;
+        }
+
+
+        .top-user-info span {
+            font-size: 9px;
+            color: #94a3b8;
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        .content {
+            padding: 30px;
+        }
+
+
+        /* =====================================================
+           PAGE HEADER
+        ===================================================== */
+
+        .content-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+
+        .content-header h1 {
+            font-size: 22px;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+
+
+        .content-header p {
+            font-size: 11px;
+            color: #64748b;
+        }
+
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            height: 42px;
+            padding: 0 17px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* =====================================================
+           STATISTICS
+        ===================================================== */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 22px;
+        }
+
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 11px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .stat-info span {
+            display: block;
+            font-size: 10px;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+
+        .stat-info strong {
+            font-size: 22px;
+            color: #0f172a;
+        }
+
+
+        .stat-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .blue {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+
+
+        .orange {
+            background: #ffedd5;
+            color: #ea580c;
+        }
+
+
+        .green {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+
+        .red {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+
+        /* =====================================================
+           FILTER
+        ===================================================== */
+
+        .filter-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 11px;
+            padding: 18px;
+            margin-bottom: 20px;
+        }
+
+
+        .filter-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 12px;
+            align-items: end;
+        }
+
+
+        .form-group label {
+            display: block;
+            font-size: 10px;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 7px;
+        }
+
+
+        .form-control {
+            width: 100%;
+            height: 40px;
+            border: 1px solid #dbe2ea;
+            border-radius: 7px;
+            padding: 0 12px;
+            outline: none;
+            font-size: 11px;
+            color: #334155;
+            background: white;
+        }
+
+
+        .form-control:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
+        }
+
+
+        .btn-filter {
+            height: 40px;
+            padding: 0 17px;
+            border: none;
+            border-radius: 7px;
+            background: #eff6ff;
+            color: #2563eb;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+
+        .btn-filter:hover {
+            background: #dbeafe;
+        }
+
+
+        /* =====================================================
+           TABLE CARD
+        ===================================================== */
+
+        .table-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 11px;
+            overflow: hidden;
+        }
+
+
+        .table-header {
+            padding: 18px 20px;
+            border-bottom: 1px solid #eef0f3;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .table-header h3 {
+            font-size: 13px;
+            color: #0f172a;
+        }
+
+
+        .table-header span {
+            font-size: 10px;
+            color: #94a3b8;
+        }
+
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+
+        th {
+            background: #f8fafc;
+            color: #64748b;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 13px 15px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+
+        td {
+            padding: 15px;
+            border-top: 1px solid #f1f5f9;
+            font-size: 10px;
+            color: #475569;
+            vertical-align: middle;
+        }
+
+
+        tbody tr:hover {
+            background: #fafcff;
+        }
+
+
+        .research-title {
+            color: #0f172a;
+            font-weight: 600;
+            font-size: 11px;
+            max-width: 310px;
+            line-height: 1.5;
+        }
+
+
+        .research-code {
+            display: block;
+            color: #94a3b8;
+            font-size: 9px;
+            margin-top: 4px;
+        }
+
+
+        /* =====================================================
+           STATUS
+        ===================================================== */
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+
+        .status i {
+            font-size: 6px;
+        }
+
+
+        .status-proses {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+
+
+        .status-disetujui {
+            background: #ecfdf5;
+            color: #047857;
+        }
+
+
+        .status-review {
+            background: #eff6ff;
+            color: #1d4ed8;
+        }
+
+
+        .status-selesai {
+            background: #f3e8ff;
+            color: #7e22ce;
+        }
+
+
+        /* =====================================================
+           ACTION
+        ===================================================== */
+
+        .action {
+            display: flex;
+            gap: 6px;
+        }
+
+
+        .btn-action {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background: white;
+            color: #64748b;
+            cursor: pointer;
+        }
+
+
+        .btn-action:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+            background: #eff6ff;
+        }
+
+
+        /* =====================================================
+           PAGINATION
+        ===================================================== */
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            border-top: 1px solid #eef0f3;
+        }
+
+
+        .pagination-info {
+            font-size: 9px;
+            color: #94a3b8;
+        }
+
+
+        .pagination-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+
+        .page-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #e2e8f0;
+            background: white;
+            border-radius: 6px;
+            font-size: 9px;
+            cursor: pointer;
+            color: #64748b;
+        }
+
+
+        .page-btn.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .filter-row {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 850px) {
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: 0.3s;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .content {
+                padding: 18px;
+            }
+
+            .content-header {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-row {
+                grid-template-columns: 1fr;
+            }
+
+            .top-user-info {
+                display: none;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     SIDEBAR
+========================================================== -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-header">
+
+        <div class="logo-icon">
+            <i class="fa-solid fa-building-columns"></i>
+        </div>
+
+        <div class="logo-text">
+
+            <h3>SIPPM STIESIA</h3>
+
+            <span>
+                Sistem Penelitian & Pengabdian
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <ul class="sidebar-menu">
+
+        <div class="menu-title">
+            MENU UTAMA
+        </div>
+
+
+        <li class="menu-item">
+
+            <a href="dashboard.html" class="menu-link">
+
+                <i class="fa-solid fa-gauge-high"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+        </li>
+
+
+        <!-- PENELITIAN -->
+
+        <li class="menu-item">
+
+            <a href="#" class="menu-link active">
+
+                <i class="fa-solid fa-flask"></i>
+
+                <span>Penelitian</span>
+
+            </a>
+
+
+            <div class="submenu">
+
+                <a href="#" class="active">
+                    Daftar Penelitian
+                </a>
+
+                <a href="#">
+                    Pengajuan Proposal
+                </a>
+
+                <a href="#">
+                    Penelitian Berjalan
+                </a>
+
+                <a href="#">
+                    Laporan Kemajuan
+                </a>
+
+                <a href="#">
+                    Laporan Akhir
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <!-- PENGABDIAN -->
+
+        <li class="menu-item">
+
+            <a href="#" class="menu-link">
+
+                <i class="fa-solid fa-hand-holding-heart"></i>
+
+                <span>Pengabdian</span>
+
+            </a>
+
+        </li>
+
+
+        <li class="menu-item">
+
+            <a href="#" class="menu-link">
+
+                <i class="fa-solid fa-award"></i>
+
+                <span>Luaran</span>
+
+            </a>
+
+        </li>
+
+
+        <div class="menu-title">
+            MONITORING
+        </div>
+
+
+        <li class="menu-item">
+
+            <a href="#" class="menu-link">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>Monitoring & Evaluasi</span>
+
+            </a>
+
+        </li>
+
+
+        <li class="menu-item">
+
+            <a href="#" class="menu-link">
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                <span>Laporan</span>
+
+            </a>
+
+        </li>
+
+
+        <div class="menu-title">
+            SISTEM
+        </div>
+
+
+        <li class="menu-item">
+
+            <a href="#" class="menu-link">
+
+                <i class="fa-solid fa-user"></i>
+
+                <span>Profil Saya</span>
+
+            </a>
+
+        </li>
+
+
+        <li class="menu-item">
+
+            <a href="#" class="menu-link">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Pengaturan</span>
+
+            </a>
+
+        </li>
+
+
+        <li class="menu-item">
+
+            <a href="sso-login.html" class="menu-link">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>Keluar</span>
+
+            </a>
+
+        </li>
+
+    </ul>
+
+
+    <div class="sidebar-footer">
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                RF
+            </div>
+
+            <div class="user-info">
+
+                <strong>
+                    Riza Nidhom Fahmi
+                </strong>
+
+                <span>
+                    Dosen / Peneliti
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================== -->
+
+<main class="main">
+
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <button
+                class="toggle-sidebar"
+                onclick="toggleSidebar()">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <div class="page-title">
+
+                <h2>
+                    Penelitian
+                </h2>
+
+                <span>
+                    Kelola data dan kegiatan penelitian
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <div class="notification">
+
+                <i class="fa-regular fa-bell"></i>
+
+                <span class="notification-badge">
+                    3
+                </span>
+
+            </div>
+
+
+            <div class="top-user">
+
+                <div class="top-avatar">
+                    RF
+                </div>
+
+                <div class="top-user-info">
+
+                    <strong>
+                        Riza Nidhom Fahmi
+                    </strong>
+
+                    <span>
+                        Dosen / Peneliti
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- CONTENT -->
+
+    <section class="content">
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="content-header">
+
+            <div>
+
+                <h1>
+                    Data Penelitian
+                </h1>
+
+                <p>
+                    Kelola proposal, pelaksanaan, dan laporan penelitian Anda.
+                </p>
+
+            </div>
+
+
+            <a href="#" class="btn-primary">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Ajukan Penelitian
+
+            </a>
+
+        </div>
+
+
+
+        <!-- STATISTICS -->
+
+        <div class="stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-info">
+
+                    <span>
+                        Total Penelitian
+                    </span>
+
+                    <strong>
+                        12
+                    </strong>
+
+                </div>
+
+                <div class="stat-icon blue">
+
+                    <i class="fa-solid fa-flask"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-info">
+
+                    <span>
+                        Sedang Berjalan
+                    </span>
+
+                    <strong>
+                        5
+                    </strong>
+
+                </div>
+
+                <div class="stat-icon orange">
+
+                    <i class="fa-solid fa-spinner"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-info">
+
+                    <span>
+                        Disetujui
+                    </span>
+
+                    <strong>
+                        4
+                    </strong>
+
+                </div>
+
+                <div class="stat-icon green">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-info">
+
+                    <span>
+                        Selesai
+                    </span>
+
+                    <strong>
+                        3
+                    </strong>
+
+                </div>
+
+                <div class="stat-icon red">
+
+                    <i class="fa-solid fa-flag-checkered"></i>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- FILTER -->
+
+        <div class="filter-card">
+
+            <div class="filter-row">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Cari Penelitian
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="search"
+                        placeholder="Judul penelitian / nomor proposal">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Tahun
+                    </label>
+
+                    <select class="form-control">
+
+                        <option>Semua Tahun</option>
+                        <option>2026</option>
+                        <option>2025</option>
+                        <option>2024</option>
+                        <option>2023</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Status
+                    </label>
+
+                    <select class="form-control">
+
+                        <option>Semua Status</option>
+                        <option>Diajukan</option>
+                        <option>Review</option>
+                        <option>Disetujui</option>
+                        <option>Berjalan</option>
+                        <option>Selesai</option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    class="btn-filter"
+                    onclick="filterData()">
+
+                    <i class="fa-solid fa-filter"></i>
+
+                    Filter
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TABLE -->
+
+        <div class="table-card">
+
+
+            <div class="table-header">
+
+                <h3>
+                    Daftar Penelitian
+                </h3>
+
+                <span>
+                    12 data penelitian
+                </span>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                No
+                            </th>
+
+                            <th>
+                                Penelitian
+                            </th>
+
+                            <th>
+                                Skema
+                            </th>
+
+                            <th>
+                                Tahun
+                            </th>
+
+                            <th>
+                                Dana
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Aksi
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="researchTable">
+
+
+                        <!-- DATA 1 -->
+
+                        <tr>
+
+                            <td>
+                                01
+                            </td>
+
+                            <td>
+
+                                <div class="research-title">
+
+                                    Sistem Informasi Monitoring
+                                    Kinerja Dosen Berbasis Web
+
+                                </div>
+
+                                <span class="research-code">
+                                    PNL-2026-001
+                                </span>
+
+                            </td>
+
+                            <td>
+                                Penelitian Internal
+                            </td>
+
+                            <td>
+                                2026
+                            </td>
+
+                            <td>
+                                Rp 15.000.000
+                            </td>
+
+                            <td>
+
+                                <span class="status status-disetujui">
+
+                                    <i class="fa-solid fa-circle"></i>
+
+                                    Disetujui
+
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <div class="action">
+
+                                    <button
+                                        class="btn-action"
+                                        title="Detail">
+
+                                        <i class="fa-regular fa-eye"></i>
+
+                                    </button>
+
+                                    <button
+                                        class="btn-action"
+                                        title="Edit">
+
+                                        <i class="fa-solid fa-pen"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- DATA 2 -->
+
+                        <tr>
+
+                            <td>
+                                02
+                            </td>
+
+                            <td>
+
+                                <div class="research-title">
+
+                                    Analisis Transformasi Digital
+                                    pada UMKM di Jawa Timur
+
+                                </div>
+
+                                <span class="research-code">
+                                    PNL-2026-002
+                                </span>
+
+                            </td>
+
+                            <td>
+                                Penelitian Dosen Pemula
+                            </td>
+
+                            <td>
+                                2026
+                            </td>
+
+                            <td>
+                                Rp 20.000.000
+                            </td>
+
+                            <td>
+
+                                <span class="status status-proses">
+
+                                    <i class="fa-solid fa-circle"></i>
+
+                                    Berjalan
+
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <div class="action">
+
+                                    <button class="btn-action">
+
+                                        <i class="fa-regular fa-eye"></i>
+
+                                    </button>
+
+                                    <button class="btn-action">
+
+                                        <i class="fa-solid fa-pen"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- DATA 3 -->
+
+                        <tr>
+
+                            <td>
+                                03
+                            </td>
+
+                            <td>
+
+                                <div class="research-title">
+
+                                    Pengembangan Model Prediksi
+                                    Kinerja Keuangan Perusahaan
+
+                                </div>
+
+                                <span class="research-code">
+                                    PNL-2026-003
+                                </span>
+
+                            </td>
+
+                            <td>
+                                Fundamental
+                            </td>
+
+                            <td>
+                                2026
+                            </td>
+
+                            <td>
+                                Rp 25.000.000
+                            </td>
+
+                            <td>
+
+                                <span class="status status-review">
+
+                                    <i class="fa-solid fa-circle"></i>
+
+                                    Review
+
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <div class="action">
+
+                                    <button class="btn-action">
+
+                                        <i class="fa-regular fa-eye"></i>
+
+                                    </button>
+
+                                    <button class="btn-action">
+
+                                        <i class="fa-solid fa-pen"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- DATA 4 -->
+
+                        <tr>
+
+                            <td>
+                                04
+                            </td>
+
+                            <td>
+
+                                <div class="research-title">
+
+                                    Implementasi Artificial
+                                    Intelligence untuk Analisis Data
+
+                                </div>
+
+                                <span class="research-code">
+                                    PNL-2025-014
+                                </span>
+
+                            </td>
+
+                            <td>
+                                Penelitian Internal
+                            </td>
+
+                            <td>
+                                2025
+                            </td>
+
+                            <td>
+                                Rp 18.000.000
+                            </td>
+
+                            <td>
+
+                                <span class="status status-selesai">
+
+                                    <i class="fa-solid fa-circle"></i>
+
+                                    Selesai
+
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <div class="action">
+
+                                    <button class="btn-action">
+
+                                        <i class="fa-regular fa-eye"></i>
+
+                                    </button>
+
+                                    <button class="btn-action">
+
+                                        <i class="fa-solid fa-file"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+
+            <!-- PAGINATION -->
+
+            <div class="pagination">
+
+                <div class="pagination-info">
+
+                    Menampilkan 1–4 dari 12 penelitian
+
+                </div>
+
+
+                <div class="pagination-buttons">
+
+                    <button class="page-btn">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+
+                    <button class="page-btn active">
+                        1
+                    </button>
+
+                    <button class="page-btn">
+                        2
+                    </button>
+
+                    <button class="page-btn">
+                        3
+                    </button>
+
+                    <button class="page-btn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+
+<script>
+
+    /* =====================================================
+       SIDEBAR
+    ===================================================== */
+
+    function toggleSidebar() {
+
+        document
+            .getElementById("sidebar")
+            .classList.toggle("open");
+
+    }
+
+
+    /* =====================================================
+       SEARCH
+    ===================================================== */
+
+    document
+        .getElementById("search")
+        .addEventListener("keyup", function() {
+
+            const keyword =
+                this.value.toLowerCase();
+
+            const rows =
+                document.querySelectorAll(
+                    "#researchTable tr"
+                );
+
+
+            rows.forEach(function(row) {
+
+                const text =
+                    row.innerText.toLowerCase();
+
+                if (text.includes(keyword)) {
+
+                    row.style.display = "";
+
+                } else {
+
+                    row.style.display = "none";
+
+                }
+
+            });
+
+        });
+
+
+    /* =====================================================
+       FILTER
+    ===================================================== */
+
+    function filterData() {
+
+        alert(
+            "Filter penelitian dijalankan."
+        );
+
+    }
+
+</script>
+
+
+</body>
+</html>
