@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - SIPPM STIESIA</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #1e293b;
+        }
+
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        .sidebar {
+
+            position: fixed;
+
+            left: 0;
+            top: 0;
+
+            width: 260px;
+            height: 100vh;
+
+            background: #062b5c;
+
+            color: white;
+
+            z-index: 1000;
+
+            transition: all 0.3s ease;
+
+            overflow-y: auto;
+        }
+
+
+        /* =====================================================
+           LOGO
+        ===================================================== */
+
+        .sidebar-header {
+
+            height: 80px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 22px;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.10);
+        }
+
+
+        .logo-icon {
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 10px;
+
+            background: #ffffff;
+
+            color: #062b5c;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 19px;
+
+            margin-right: 12px;
+        }
+
+
+        .logo-text h3 {
+
+            font-size: 16px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.3px;
+        }
+
+
+        .logo-text span {
+
+            display: block;
+
+            font-size: 9px;
+
+            color: rgba(255,255,255,0.65);
+
+            margin-top: 3px;
+        }
+
+
+        /* =====================================================
+           MENU
+        ===================================================== */
+
+        .sidebar-menu {
+
+            padding: 20px 13px;
+        }
+
+
+        .menu-title {
+
+            padding: 0 12px;
+
+            margin: 18px 0 8px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            color: rgba(255,255,255,0.40);
+        }
+
+
+        .menu-item {
+
+            list-style: none;
+
+            margin-bottom: 4px;
+        }
+
+
+        .menu-link {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            height: 45px;
+
+            padding: 0 13px;
+
+            color: rgba(255,255,255,0.72);
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-size: 13px;
+
+            font-weight: 500;
+
+            transition: 0.2s;
+
+            cursor: pointer;
+        }
+
+
+        .menu-link i {
+
+            width: 20px;
+
+            text-align: center;
+
+            font-size: 15px;
+        }
+
+
+        .menu-link:hover {
+
+            background:
+                rgba(255,255,255,0.08);
+
+            color: white;
+        }
+
+
+        .menu-link.active {
+
+            background: #2563eb;
+
+            color: white;
+
+            box-shadow:
+                0 5px 15px rgba(37,99,235,0.25);
+        }
+
+
+        /* =====================================================
+           BADGE
+        ===================================================== */
+
+        .menu-badge {
+
+            margin-left: auto;
+
+            min-width: 20px;
+
+            height: 20px;
+
+            padding: 0 6px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: #ef4444;
+
+            border-radius: 20px;
+
+            color: white;
+
+            font-size: 9px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           SUBMENU
+        ===================================================== */
+
+        .submenu {
+
+            display: none;
+
+            padding-left: 45px;
+
+            margin-top: 3px;
+        }
+
+
+        .submenu.show {
+
+            display: block;
+        }
+
+
+        .submenu a {
+
+            display: block;
+
+            padding: 9px 10px;
+
+            color: rgba(255,255,255,0.60);
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            border-radius: 6px;
+        }
+
+
+        .submenu a:hover {
+
+            color: white;
+
+            background:
+                rgba(255,255,255,0.06);
+        }
+
+
+        .arrow {
+
+            margin-left: auto;
+
+            font-size: 10px;
+
+            transition: 0.2s;
+        }
+
+
+        .arrow.rotate {
+
+            transform: rotate(180deg);
+        }
+
+
+        /* =====================================================
+           SIDEBAR FOOTER
+        ===================================================== */
+
+        .sidebar-footer {
+
+            position: absolute;
+
+            bottom: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            padding: 15px;
+
+            background:
+                rgba(0,0,0,0.10);
+
+            border-top:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+
+        .sidebar-user {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        .user-avatar {
+
+            width: 37px;
+            height: 37px;
+
+            border-radius: 50%;
+
+            background: #dbeafe;
+
+            color: #2563eb;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+
+        .user-info {
+
+            min-width: 0;
+        }
+
+
+        .user-info strong {
+
+            display: block;
+
+            color: white;
+
+            font-size: 11px;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+
+        .user-info span {
+
+            display: block;
+
+            color: rgba(255,255,255,0.50);
+
+            font-size: 9px;
+
+            margin-top: 3px;
+        }
+
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        .main {
+
+            margin-left: 260px;
+
+            min-height: 100vh;
+
+            transition: 0.3s;
+        }
+
+
+        /* =====================================================
+           TOPBAR
+        ===================================================== */
+
+        .topbar {
+
+            height: 80px;
+
+            background: white;
+
+            border-bottom:
+                1px solid #e5e7eb;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 30px;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 900;
+        }
+
+
+        .topbar-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .toggle-sidebar {
+
+            width: 38px;
+            height: 38px;
+
+            border: 1px solid #e5e7eb;
+
+            background: white;
+
+            border-radius: 8px;
+
+            color: #475569;
+
+            cursor: pointer;
+        }
+
+
+        .page-title h2 {
+
+            font-size: 18px;
+
+            color: #0f172a;
+        }
+
+
+        .page-title span {
+
+            display: block;
+
+            font-size: 10px;
+
+            color: #94a3b8;
+
+            margin-top: 4px;
+        }
+
+
+        /* =====================================================
+           TOPBAR RIGHT
+        ===================================================== */
+
+        .topbar-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+        }
+
+
+        .notification {
+
+            position: relative;
+
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 8px;
+
+            color: #64748b;
+
+            cursor: pointer;
+        }
+
+
+        .notification-badge {
+
+            position: absolute;
+
+            top: -4px;
+            right: -4px;
+
+            width: 17px;
+            height: 17px;
+
+            background: #ef4444;
+
+            border-radius: 50%;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 8px;
+        }
+
+
+        .top-user {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        .top-avatar {
+
+            width: 38px;
+            height: 38px;
+
+            border-radius: 50%;
+
+            background: #dbeafe;
+
+            color: #2563eb;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-weight: 700;
+
+            font-size: 12px;
+        }
+
+
+        .top-user-info strong {
+
+            display: block;
+
+            font-size: 11px;
+        }
+
+
+        .top-user-info span {
+
+            font-size: 9px;
+
+            color: #94a3b8;
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        .content {
+
+            padding: 30px;
+        }
+
+
+        /* =====================================================
+           WELCOME
+        ===================================================== */
+
+        .welcome {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #062b5c,
+                    #0a4b96
+                );
+
+            border-radius: 13px;
+
+            padding: 27px 30px;
+
+            color: white;
+
+            position: relative;
+
+            overflow: hidden;
+
+            margin-bottom: 25px;
+        }
+
+
+        .welcome::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 230px;
+            height: 230px;
+
+            border: 35px solid rgba(255,255,255,0.05);
+
+            border-radius: 50%;
+
+            right: -90px;
+
+            top: -100px;
+        }
+
+
+        .welcome h1 {
+
+            font-size: 21px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .welcome p {
+
+            color: rgba(255,255,255,0.72);
+
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           STAT CARDS
+        ===================================================== */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .stat-card {
+
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        .stat-info span {
+
+            display: block;
+
+            color: #64748b;
+
+            font-size: 10px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .stat-info strong {
+
+            font-size: 24px;
+
+            color: #0f172a;
+        }
+
+
+        .stat-icon {
+
+            width: 45px;
+            height: 45px;
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 17px;
+        }
+
+
+        .blue {
+
+            background: #dbeafe;
+            color: #2563eb;
+        }
+
+
+        .green {
+
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+
+        .orange {
+
+            background: #ffedd5;
+            color: #ea580c;
+        }
+
+
+        .purple {
+
+            background: #f3e8ff;
+            color: #9333ea;
+        }
+
+
+        /* =====================================================
+           GRID CONTENT
+        ===================================================== */
+
+        .dashboard-grid {
+
+            display: grid;
+
+            grid-template-columns: 2fr 1fr;
+
+            gap: 20px;
+        }
+
+
+        .card {
+
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+        }
+
+
+        .card-header {
+
+            padding: 18px 20px;
+
+            border-bottom: 1px solid #eef0f3;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        .card-header h3 {
+
+            font-size: 13px;
+
+            color: #0f172a;
+        }
+
+
+        .card-header a {
+
+            font-size: 10px;
+
+            color: #2563eb;
+
+            text-decoration: none;
+        }
+
+
+        .card-body {
+
+            padding: 20px;
+        }
+
+
+        /* =====================================================
+           ACTIVITY
+        ===================================================== */
+
+        .activity {
+
+            display: flex;
+
+            gap: 13px;
+
+            padding-bottom: 17px;
+
+            margin-bottom: 17px;
+
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+
+        .activity:last-child {
+
+            border-bottom: none;
+
+            margin-bottom: 0;
+
+            padding-bottom: 0;
+        }
+
+
+        .activity-icon {
+
+            width: 35px;
+            height: 35px;
+
+            flex-shrink: 0;
+
+            border-radius: 8px;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 12px;
+        }
+
+
+        .activity-info strong {
+
+            display: block;
+
+            font-size: 11px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .activity-info span {
+
+            color: #94a3b8;
+
+            font-size: 9px;
+        }
+
+
+        /* =====================================================
+           QUICK MENU
+        ===================================================== */
+
+        .quick-menu {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 10px;
+        }
+
+
+        .quick-item {
+
+            padding: 15px 10px;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 9px;
+
+            text-decoration: none;
+
+            color: #334155;
+
+            text-align: center;
+
+            transition: 0.2s;
+        }
+
+
+        .quick-item:hover {
+
+            border-color: #2563eb;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+        }
+
+
+        .quick-item i {
+
+            display: block;
+
+            font-size: 18px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .quick-item span {
+
+            font-size: 9px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .stats {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 850px) {
+
+            .sidebar {
+
+                transform: translateX(-100%);
+            }
+
+
+            .sidebar.open {
+
+                transform: translateX(0);
+            }
+
+
+            .main {
+
+                margin-left: 0;
+            }
+
+
+            .dashboard-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .content {
+
+                padding: 18px;
+            }
+
+
+            .topbar {
+
+                padding: 0 18px;
+            }
+
+
+            .top-user-info {
+
+                display: none;
+            }
+
+
+            .stats {
+
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     SIDEBAR
+========================================================== -->
+
+<aside class="sidebar" id="sidebar">
+
+
+    <!-- LOGO -->
+
+    <div class="sidebar-header">
+
+        <div class="logo-icon">
+
+            <i class="fa-solid fa-building-columns"></i>
+
+        </div>
+
+        <div class="logo-text">
+
+            <h3>SIPPM STIESIA</h3>
+
+            <span>
+                Sistem Penelitian & Pengabdian
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- MENU -->
+
+    <ul class="sidebar-menu">
+
+
+        <div class="menu-title">
+            MENU UTAMA
+        </div>
+
+
+        <!-- Dashboard -->
+
+        <li class="menu-item">
+
+            <a
+                href="#"
+                class="menu-link active">
+
+                <i class="fa-solid fa-gauge-high"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+        </li>
+
+
+        <!-- Penelitian -->
+
+        <li class="menu-item">
+
+            <a
+                href="#"
+                class="menu-link"
+                onclick="toggleSubmenu('penelitian', this)">
+
+                <i class="fa-solid fa-flask"></i>
+
+                <span>Penelitian</span>
+
+                <i class="fa-solid fa-chevron-down arrow"></i>
+
+            </a>
+
+
+            <div
+                class="submenu"
+                id="penelitian">
+
+                <a href="#">
+                    Daftar Penelitian
+                </a>
+
+                <a href="#">
+                    Pengajuan Proposal
+                </a>
+
+                <a href="#">
+                    Penelitian Berjalan
+                </a>
+
+                <a href="#">
+                    Laporan Kemajuan
+                </a>
+
+                <a href="#">
+                    Laporan Akhir
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <!-- Pengabdian -->
+
+        <li class="menu-item">
+
+            <a
+                href="#"
+                class="menu-link"
+                onclick="toggleSubmenu('pengabdian', this)">
+
+                <i class="fa-solid fa-hand-holding-heart"></i>
+
+                <span>Pengabdian</span>
+
+                <i class="fa-solid fa-chevron-down arrow"></i>
+
+            </a>
+
+
+            <div
+                class="submenu"
+                id="pengabdian">
+
+                <a href="#">
+                    Daftar Pengabdian
+                </a>
+
+                <a href="#">
+                    Pengajuan Proposal
+                </a>
+
+                <a href="#">
+                    Pengabdian Berjalan
+                </a>
+
+                <a href="#">
+                    Laporan Kemajuan
+                </a>
+
+                <a href="#">
+                    Laporan Akhir
+                </a>
+
+            </div>
+
+        </li>
+
+
+        <!-- Luaran -->
+
+        <li class="menu-item">
+
+            <a
+                href="#"
+                class="menu-link">
+
+                <i class="fa-solid fa-award"></i>
+
+                <span>Luaran</span>
+
+            </a>
+
+        </li>
+
+
+
+        <!-- Laporan -->
+
+        <div class="menu-title">
+            MONITORING
+        </div>
+
+
+        <li class="menu-item">
+
+            <a
+                href="#"
+                class="menu-link">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>Monitoring & Evaluasi</span>
+
+            </a>
+
+        </li>
+
+
+        <li class="menu-item">
+
+            <a
+                href="#"
+                class="menu-link">
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                <span>Laporan</span>
+
+                <span class="menu-badge">
+                    3
+                </span>
+
+            </a>
+
+        </li>
+
+
+
+        <!-- ADMIN -->
+
+        <div class="menu-title">
+            SISTEM
+        </div>
+
+
+        <li class="menu-item">
+
+            <a
+                href="#"
+                class="menu-link">
+
+                <i class="fa-solid fa-user"></i>
+
+                <span>Profil Saya</span>
+
+            </a>
+
+        </li>
+
+
+        <li class="menu-item">
+
+            <a
+                href="#"
+                class="menu-link">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Pengaturan</span>
+
+            </a>
+
+        </li>
+
+
+        <li class="menu-item">
+
+            <a
+                href="sso-login.html"
+                class="menu-link">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>Keluar</span>
+
+            </a>
+
+        </li>
+
+    </ul>
+
+
+
+    <!-- USER -->
+
+    <div class="sidebar-footer">
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                RF
+            </div>
+
+            <div class="user-info">
+
+                <strong>
+                    Riza Nidhom Fahmi
+                </strong>
+
+                <span>
+                    Dosen / Peneliti
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================== -->
+
+<main class="main">
+
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+
+        <div class="topbar-left">
+
+            <button
+                class="toggle-sidebar"
+                onclick="toggleSidebar()">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <div class="page-title">
+
+                <h2>
+                    Dashboard
+                </h2>
+
+                <span>
+                    Sistem Informasi Penelitian dan Pengabdian kepada Masyarakat
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="topbar-right">
+
+
+            <!-- Notification -->
+
+            <div class="notification">
+
+                <i class="fa-regular fa-bell"></i>
+
+                <span class="notification-badge">
+                    3
+                </span>
+
+            </div>
+
+
+            <!-- User -->
+
+            <div class="top-user">
+
+                <div class="top-avatar">
+                    RF
+                </div>
+
+                <div class="top-user-info">
+
+                    <strong>
+                        Riza Nidhom Fahmi
+                    </strong>
+
+                    <span>
+                        Dosen / Peneliti
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </header>
+
+
+
+    <!-- CONTENT -->
+
+    <section class="content">
+
+
+        <!-- WELCOME -->
+
+        <div class="welcome">
+
+            <h1>
+                Selamat Datang, Riza Nidhom Fahmi 👋
+            </h1>
+
+            <p>
+                Selamat datang di Sistem Informasi Penelitian
+                dan Pengabdian kepada Masyarakat STIESIA.
+                Kelola proposal, penelitian, pengabdian,
+                dan luaran Anda dalam satu sistem.
+            </p>
+
+        </div>
+
+
+
+        <!-- STATISTIC -->
+
+        <div class="stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-info">
+
+                    <span>
+                        Total Penelitian
+                    </span>
+
+                    <strong>
+                        12
+                    </strong>
+
+                </div>
+
+                <div class="stat-icon blue">
+
+                    <i class="fa-solid fa-flask"></i>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-info">
+
+                    <span>
+                        Pengabdian
+                    </span>
+
+                    <strong>
+                        8
+                    </strong>
+
+                </div>
+
+                <div class="stat-icon green">
+
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-info">
+
+                    <span>
+                        Sedang Berjalan
+                    </span>
+
+                    <strong>
+                        5
+                    </strong>
+
+                </div>
+
+                <div class="stat-icon orange">
+
+                    <i class="fa-solid fa-spinner"></i>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-info">
+
+                    <span>
+                        Luaran
+                    </span>
+
+                    <strong>
+                        18
+                    </strong>
+
+                </div>
+
+                <div class="stat-icon purple">
+
+                    <i class="fa-solid fa-award"></i>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- DASHBOARD GRID -->
+
+        <div class="dashboard-grid">
+
+
+            <!-- AKTIVITAS -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <h3>
+                        Aktivitas Terbaru
+                    </h3>
+
+                    <a href="#">
+                        Lihat Semua
+                    </a>
+
+                </div>
+
+
+                <div class="card-body">
+
+
+                    <div class="activity">
+
+                        <div class="activity-icon">
+
+                            <i class="fa-solid fa-file-circle-plus"></i>
+
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>
+                                Proposal penelitian berhasil diajukan
+                            </strong>
+
+                            <span>
+                                Penelitian • 2 jam yang lalu
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="activity">
+
+                        <div class="activity-icon">
+
+                            <i class="fa-solid fa-file-arrow-up"></i>
+
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>
+                                Laporan kemajuan telah diunggah
+                            </strong>
+
+                            <span>
+                                Penelitian • Kemarin
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="activity">
+
+                        <div class="activity-icon">
+
+                            <i class="fa-solid fa-check"></i>
+
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>
+                                Proposal penelitian disetujui
+                            </strong>
+
+                            <span>
+                                Penelitian • 3 hari yang lalu
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="activity">
+
+                        <div class="activity-icon">
+
+                            <i class="fa-solid fa-award"></i>
+
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>
+                                Luaran penelitian telah diverifikasi
+                            </strong>
+
+                            <span>
+                                Luaran • 5 hari yang lalu
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- QUICK MENU -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <h3>
+                        Akses Cepat
+                    </h3>
+
+                </div>
+
+
+                <div class="card-body">
+
+
+                    <div class="quick-menu">
+
+
+                        <a href="#" class="quick-item">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                            <span>
+                                Ajukan Penelitian
+                            </span>
+
+                        </a>
+
+
+                        <a href="#" class="quick-item">
+
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+
+                            <span>
+                                Ajukan Pengabdian
+                            </span>
+
+                        </a>
+
+
+                        <a href="#" class="quick-item">
+
+                            <i class="fa-solid fa-file-arrow-up"></i>
+
+                            <span>
+                                Upload Laporan
+                            </span>
+
+                        </a>
+
+
+                        <a href="#" class="quick-item">
+
+                            <i class="fa-solid fa-award"></i>
+
+                            <span>
+                                Tambah Luaran
+                            </span>
+
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<script>
+
+    /* =====================================================
+       SIDEBAR MOBILE
+    ===================================================== */
+
+    function toggleSidebar() {
+
+        document
+            .getElementById("sidebar")
+            .classList.toggle("open");
+
+    }
+
+
+    /* =====================================================
+       SUBMENU
+    ===================================================== */
+
+    function toggleSubmenu(id, element) {
+
+        const submenu =
+            document.getElementById(id);
+
+        const arrow =
+            element.querySelector(".arrow");
+
+
+        submenu.classList.toggle("show");
+
+        arrow.classList.toggle("rotate");
+
+    }
+
+
+    /* =====================================================
+       ACTIVE MENU
+    ===================================================== */
+
+    const menuLinks =
+        document.querySelectorAll(".menu-link");
+
+
+    menuLinks.forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+            if (
+                !this.getAttribute("onclick")
+            ) {
+
+                menuLinks.forEach(function(item) {
+
+                    item.classList.remove("active");
+
+                });
+
+                this.classList.add("active");
+
+            }
+
+        });
+
+    });
+
+</script>
+
+
+</body>
+</html>

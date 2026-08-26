@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login SSO - STIESIA</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #f4f7fb;
+            color: #1e293b;
+        }
+
+
+        /* ================================================
+           PAGE
+        ================================================= */
+
+        .sso-page {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    #e8f1ff,
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 90% 90%,
+                    #eafbf3,
+                    transparent 35%
+                ),
+                #f5f7fb;
+        }
+
+
+        /* ================================================
+           CONTAINER
+        ================================================= */
+
+        .sso-container {
+
+            width: 100%;
+            max-width: 1050px;
+
+            min-height: 650px;
+
+            background: #ffffff;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            display: grid;
+
+            grid-template-columns: 43% 57%;
+
+            box-shadow:
+                0 25px 70px rgba(15, 23, 42, 0.12);
+        }
+
+
+        /* ================================================
+           LEFT PANEL
+        ================================================= */
+
+        .sso-left {
+
+            position: relative;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #062b5c,
+                    #0a3b78
+                );
+
+            color: white;
+
+            padding: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+        }
+
+
+        .sso-left::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            border-radius: 50%;
+
+            border: 65px solid rgba(255,255,255,0.04);
+
+            left: -300px;
+            bottom: -270px;
+        }
+
+
+        .sso-left::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 350px;
+            height: 350px;
+
+            border-radius: 50%;
+
+            border: 20px solid rgba(255,193,7,0.8);
+
+            right: -260px;
+            top: -200px;
+        }
+
+
+        .sso-brand {
+
+            position: relative;
+
+            z-index: 2;
+
+            text-align: center;
+        }
+
+
+        /* ================================================
+           LOGO
+        ================================================= */
+
+        .logo {
+
+            width: 105px;
+            height: 105px;
+
+            margin: 0 auto 25px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255,255,255,0.1);
+
+            border: 2px solid rgba(255,255,255,0.35);
+
+            font-size: 43px;
+        }
+
+
+        .sso-brand h1 {
+
+            font-size: 31px;
+
+            font-weight: 800;
+
+            margin-bottom: 10px;
+        }
+
+
+        .sso-brand .subtitle {
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            color: rgba(255,255,255,0.82);
+
+            max-width: 360px;
+        }
+
+
+        .institution {
+
+            margin-top: 25px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            line-height: 1.6;
+        }
+
+
+        /* ================================================
+           RIGHT PANEL
+        ================================================= */
+
+        .sso-right {
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 50px;
+        }
+
+
+        .sso-card {
+
+            width: 100%;
+
+            max-width: 420px;
+        }
+
+
+        /* ================================================
+           HEADER
+        ================================================= */
+
+        .sso-header {
+
+            margin-bottom: 30px;
+        }
+
+
+        .sso-icon {
+
+            width: 58px;
+            height: 58px;
+
+            background: #dbeafe;
+
+            color: #2563eb;
+
+            border-radius: 12px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .sso-header h2 {
+
+            font-size: 28px;
+
+            color: #0f172a;
+
+            margin-bottom: 9px;
+        }
+
+
+        .sso-header p {
+
+            color: #64748b;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        /* ================================================
+           ACCOUNT BOX
+        ================================================= */
+
+        .account-box {
+
+            border: 1px solid #dbe2ea;
+
+            border-radius: 11px;
+
+            padding: 15px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            margin-bottom: 20px;
+
+            background: #f8fafc;
+        }
+
+
+        .account-icon {
+
+            width: 43px;
+            height: 43px;
+
+            border-radius: 50%;
+
+            background: #dbeafe;
+
+            color: #2563eb;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .account-info strong {
+
+            display: block;
+
+            font-size: 13px;
+
+            margin-bottom: 3px;
+        }
+
+
+        .account-info span {
+
+            font-size: 11px;
+
+            color: #64748b;
+        }
+
+
+        /* ================================================
+           FORM
+        ================================================= */
+
+        .form-group {
+
+            margin-bottom: 18px;
+        }
+
+
+        .form-label {
+
+            display: block;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            color: #334155;
+
+            margin-bottom: 8px;
+        }
+
+
+        .input-wrapper {
+
+            position: relative;
+        }
+
+
+        .input-wrapper > i {
+
+            position: absolute;
+
+            left: 15px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #64748b;
+        }
+
+
+        .input-wrapper input {
+
+            width: 100%;
+
+            height: 52px;
+
+            border: 1px solid #dbe2ea;
+
+            border-radius: 9px;
+
+            padding: 0 45px;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+
+        .input-wrapper input:focus {
+
+            border-color: #2563eb;
+
+            box-shadow:
+                0 0 0 3px rgba(37,99,235,0.10);
+        }
+
+
+        .password-eye {
+
+            left: auto !important;
+
+            right: 15px;
+
+            cursor: pointer;
+        }
+
+
+        /* ================================================
+           OPTIONS
+        ================================================= */
+
+        .login-options {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 23px;
+
+            font-size: 12px;
+        }
+
+
+        .remember {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: #64748b;
+        }
+
+
+        .forgot {
+
+            text-decoration: none;
+
+            color: #2563eb;
+
+            font-weight: 600;
+        }
+
+
+        /* ================================================
+           LOGIN BUTTON
+        ================================================= */
+
+        .btn-login {
+
+            width: 100%;
+
+            height: 52px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background: #2563eb;
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .btn-login:hover {
+
+            background: #1d4ed8;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* ================================================
+           SECURITY INFO
+        ================================================= */
+
+        .security-info {
+
+            display: flex;
+
+            gap: 10px;
+
+            align-items: flex-start;
+
+            padding: 14px;
+
+            background: #eff6ff;
+
+            border: 1px solid #dbeafe;
+
+            border-radius: 9px;
+
+            margin-top: 20px;
+        }
+
+
+        .security-info i {
+
+            color: #2563eb;
+
+            font-size: 14px;
+
+            margin-top: 2px;
+        }
+
+
+        .security-info p {
+
+            color: #475569;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+        }
+
+
+        /* ================================================
+           BACK
+        ================================================= */
+
+        .back-login {
+
+            text-align: center;
+
+            margin-top: 23px;
+        }
+
+
+        .back-login a {
+
+            color: #2563eb;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+
+        .back-login a:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* ================================================
+           FOOTER
+        ================================================= */
+
+        .footer {
+
+            text-align: center;
+
+            margin-top: 28px;
+
+            color: #94a3b8;
+
+            font-size: 10px;
+        }
+
+
+        /* ================================================
+           RESPONSIVE
+        ================================================= */
+
+        @media (max-width: 800px) {
+
+            .sso-container {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .sso-left {
+
+                min-height: 240px;
+
+                padding: 35px;
+            }
+
+
+            .logo {
+
+                width: 75px;
+                height: 75px;
+
+                font-size: 30px;
+
+                margin-bottom: 15px;
+            }
+
+
+            .sso-brand h1 {
+
+                font-size: 24px;
+            }
+
+
+            .sso-right {
+
+                padding: 40px 25px;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .sso-page {
+
+                padding: 0;
+            }
+
+
+            .sso-container {
+
+                min-height: 100vh;
+
+                border-radius: 0;
+
+                box-shadow: none;
+            }
+
+
+            .sso-left {
+
+                min-height: 210px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="sso-page">
+
+
+    <div class="sso-container">
+
+
+        <!-- =================================================
+             LEFT
+        ================================================== -->
+
+        <div class="sso-left">
+
+
+            <div class="sso-brand">
+
+
+                <div class="logo">
+
+                    <i class="fa-solid fa-building-columns"></i>
+
+                </div>
+
+
+                <h1>
+                    STIESIA
+                </h1>
+
+
+                <div class="subtitle">
+
+                    Single Sign-On
+
+                    <br>
+
+                    Sistem Autentikasi Terintegrasi
+                    STIESIA
+
+                </div>
+
+
+                <div class="institution">
+
+                    Sekolah Tinggi Ilmu Ekonomi
+                    Indonesia Surabaya
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             RIGHT
+        ================================================== -->
+
+        <div class="sso-right">
+
+
+            <div class="sso-card">
+
+
+                <div class="sso-header">
+
+
+                    <div class="sso-icon">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                    </div>
+
+
+                    <h2>
+                        Login SSO STIESIA
+                    </h2>
+
+
+                    <p>
+
+                        Gunakan akun resmi STIESIA untuk
+                        mengakses berbagai layanan dan
+                        aplikasi yang terintegrasi.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- ACCOUNT -->
+
+                <div class="account-box">
+
+
+                    <div class="account-icon">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+
+                    <div class="account-info">
+
+                        <strong>
+                            Akun STIESIA
+                        </strong>
+
+                        <span>
+                            Gunakan username dan password
+                            akun institusi Anda
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- FORM -->
+
+                <form onsubmit="loginSSO(event)">
+
+
+                    <div class="form-group">
+
+
+                        <label class="form-label">
+
+                            Username / NIP / Email
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-user"></i>
+
+
+                            <input
+                                type="text"
+                                id="username"
+                                placeholder="Masukkan username atau email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+
+                        <label class="form-label">
+
+                            Password
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-lock"></i>
+
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Masukkan password"
+                                required
+                            >
+
+
+                            <i
+                                class="fa-regular fa-eye password-eye"
+                                onclick="togglePassword()">
+                            </i>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="login-options">
+
+
+                        <label class="remember">
+
+                            <input
+                                type="checkbox"
+                                id="remember"
+                            >
+
+                            Ingat perangkat ini
+
+                        </label>
+
+
+                        <a
+                            href="forgot-password.html"
+                            class="forgot">
+
+                            Lupa Password?
+
+                        </a>
+
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="btn-login">
+
+                        <i class="fa-solid fa-right-to-bracket"></i>
+
+                        &nbsp;
+
+                        Masuk dengan SSO
+
+                    </button>
+
+
+                </form>
+
+
+
+                <!-- SECURITY -->
+
+                <div class="security-info">
+
+
+                    <i class="fa-solid fa-lock"></i>
+
+
+                    <p>
+
+                        Koneksi Anda dilindungi dengan
+                        enkripsi. Jangan membagikan username
+                        dan password akun STIESIA kepada orang lain.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- BACK -->
+
+                <div class="back-login">
+
+                    <a href="index.html">
+
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                        &nbsp;
+
+                        Kembali ke Login SIPPM
+
+                    </a>
+
+                </div>
+
+
+
+                <div class="footer">
+
+                    © 2026 STIESIA Surabaya.
+                    All rights reserved.
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+    /* =====================================================
+       SHOW / HIDE PASSWORD
+    ===================================================== */
+
+    function togglePassword() {
+
+        const password =
+            document.getElementById("password");
+
+        const icon =
+            document.querySelector(".password-eye");
+
+
+        if (password.type === "password") {
+
+            password.type = "text";
+
+            icon.classList.remove("fa-eye");
+
+            icon.classList.add("fa-eye-slash");
+
+        } else {
+
+            password.type = "password";
+
+            icon.classList.remove("fa-eye-slash");
+
+            icon.classList.add("fa-eye");
+
+        }
+
+    }
+
+
+    /* =====================================================
+       LOGIN SSO
+    ===================================================== */
+
+    function loginSSO(event) {
+
+        event.preventDefault();
+
+
+        const username =
+            document.getElementById("username").value;
+
+
+        const password =
+            document.getElementById("password").value;
+
+
+        if (
+            username.trim() !== "" &&
+            password.trim() !== ""
+        ) {
+
+            /*
+             * MOCKUP
+             *
+             * Pada implementasi sebenarnya,
+             * proses ini diganti dengan redirect
+             * ke Identity Provider / SSO Server STIESIA.
+             */
+
+
+            alert(
+                "Login SSO berhasil (Demo)."
+            );
+
+
+            // Contoh redirect setelah login:
+            // window.location.href = "dashboard.html";
+
+        }
+
+    }
+
+</script>
+
+
+</body>
+</html>
