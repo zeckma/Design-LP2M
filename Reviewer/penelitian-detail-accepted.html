@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Review Proposal - SIPPM STIESIA</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+
+    <style>
+        :root {
+            --brand-navy: #062b5c;
+            --brand-navy-light: #0a4b96;
+            --brand-blue: #2563eb;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #f5f7fb;
+            color: #1e293b;
+        }
+
+        /* ---------- Sidebar ---------- */
+        #sidebar {
+            --bs-offcanvas-bg: var(--brand-navy);
+            --bs-offcanvas-color: #fff;
+            width: 260px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--brand-navy) !important;
+            color: #fff;
+        }
+
+        @media (min-width: 992px) {
+            #sidebar {
+                flex-shrink: 0;
+            }
+        }
+
+        .sidebar-brand-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: #fff;
+            color: var(--brand-navy);
+        }
+
+        .menu-title {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, .4) !important;
+        }
+
+        .menu-link,
+        .menu-link span,
+        .menu-link i {
+            color: rgba(255, 255, 255, .72) !important;
+        }
+
+        .menu-link {
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .menu-link i.fa-fw {
+            font-size: 15px;
+        }
+
+        .menu-link:hover,
+        .menu-link:hover span,
+        .menu-link:hover i {
+            background: rgba(255, 255, 255, .08);
+            color: #fff !important;
+        }
+
+        .menu-link.active,
+        .menu-link.active span,
+        .menu-link.active i {
+            background: var(--brand-blue);
+            color: #fff !important;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, .25);
+        }
+
+        .menu-link .arrow {
+            margin-left: auto;
+            font-size: 10px;
+            transition: transform .2s;
+        }
+
+        .menu-link[aria-expanded="true"] .arrow {
+            transform: rotate(180deg);
+        }
+
+        .submenu a {
+            color: rgba(255, 255, 255, .6) !important;
+            font-size: 11px;
+            border-radius: 6px;
+        }
+
+        .submenu a:hover {
+            color: #fff !important;
+            background: rgba(255, 255, 255, .06);
+        }
+
+        .submenu a.active {
+            color: #fff !important;
+            background: rgba(255, 255, 255, .14);
+            font-weight: 600;
+        }
+
+        .sidebar-footer {
+            background: rgba(0, 0, 0, .1);
+            border-top: 1px solid rgba(255, 255, 255, .08);
+            color: #fff;
+        }
+
+        .avatar-circle {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #dbeafe;
+            color: var(--brand-blue);
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        /* ---------- Section Card ---------- */
+        .review-section-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .section-header-title {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            color: var(--brand-navy);
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Styling form disabled */
+        .form-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+
+        .form-control:disabled,
+        .form-select:disabled {
+            background-color: #f8fafc;
+            border-color: #cbd5e1;
+            color: #334155;
+            font-size: 12px;
+            cursor: not-allowed;
+            opacity: 1;
+        }
+
+        /* Download item box */
+        .doc-download-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px;
+            background: #f8fafc;
+            transition: 0.2s;
+        }
+
+        .doc-download-card:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        /* Assessment item box */
+        .form-eval-card {
+            border: 1px dashed #cbd5e1;
+            border-radius: 10px;
+            padding: 18px;
+            background: #ffffff;
+        }
+
+        /* Modal Table Styling */
+        .modal-eval-table th {
+            font-size: 11px;
+            background-color: #f1f5f9;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .modal-eval-table td {
+            font-size: 11.5px;
+            vertical-align: middle;
+        }
+
+        .form-note-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 11px;
+            color: #475569;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="d-flex">
+
+        <!-- =========================================================
+             SIDEBAR
+        ========================================================== -->
+        <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="sidebar">
+
+            <!-- LOGO -->
+            <div class="d-flex align-items-center gap-3 p-3 border-bottom border-light border-opacity-10"
+                style="height:80px;">
+                <div class="sidebar-brand-icon d-flex align-items-center justify-content-center fs-5">
+                    <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <div>
+                    <h3 class="fs-6 fw-bold mb-0">SIPPM STIESIA</h3>
+                    <span class="d-block" style="font-size:9px;color:rgba(255,255,255,.65);">Sistem Penelitian &amp;
+                        Pengabdian</span>
+                </div>
+                <button type="button" class="btn-close btn-close-white ms-auto d-lg-none" data-bs-dismiss="offcanvas"
+                    data-bs-target="#sidebar" aria-label="Close"></button>
+            </div>
+
+            <!-- MENU -->
+            <ul class="nav flex-column p-3" style="--bs-nav-link-padding-y:0;">
+
+                <div class="menu-title text-uppercase px-2 mb-2 mt-2">Menu Utama</div>
+
+                <li class="nav-item mb-1">
+                    <a href="dashboard.html" class="menu-link nav-link d-flex align-items-center gap-3 px-3 py-2">
+                        <i class="fa-solid fa-gauge-high fa-fw"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="nav-item mb-1">
+                    <a href="#" class="menu-link nav-link d-flex align-items-center gap-3 px-3 py-2"
+                        data-bs-toggle="collapse" data-bs-target="#penelitianSubmenu" aria-expanded="true"
+                        aria-controls="penelitianSubmenu">
+                        <i class="fa-solid fa-flask fa-fw"></i>
+                        <span>Penelitian</span>
+                        <i class="fa-solid fa-chevron-down arrow"></i>
+                    </a>
+                    <div class="collapse show submenu ps-4 ms-2" id="penelitianSubmenu">
+                        <a href="penelitian-review.html" class="d-block px-2 py-2 active">Daftar Penelitian - Review</a>
+                        <a href="penelitian-accepted.html" class="d-block px-2 py-2">Daftar Penelitian - Accepted</a>
+                    </div>
+                </li>
+
+                <li class="nav-item mb-1">
+                    <a href="#" class="menu-link nav-link d-flex align-items-center gap-3 px-3 py-2"
+                        data-bs-toggle="collapse" data-bs-target="#pengabdianSubmenu" aria-expanded="false"
+                        aria-controls="pengabdianSubmenu">
+                        <i class="fa-solid fa-hand-holding-heart fa-fw"></i>
+                        <span>Pengabdian</span>
+                        <i class="fa-solid fa-chevron-down arrow"></i>
+                    </a>
+                    <div class="collapse submenu ps-4 ms-2" id="pengabdianSubmenu">
+                        <a href="pengabdian-review.html" class="d-block px-2 py-2">Daftar Pengabdian - Review</a>
+                        <a href="pengabdian-accepted.html" class="d-block px-2 py-2">Daftar Pengabdian - Accepted</a>
+                    </div>
+                </li>
+
+                <div class="menu-title text-uppercase px-2 mb-2 mt-3">Sistem</div>
+
+                <li class="nav-item mb-1">
+                    <a href="#" class="menu-link nav-link d-flex align-items-center gap-3 px-3 py-2">
+                        <i class="fa-solid fa-user fa-fw"></i>
+                        <span>Profil Saya</span>
+                    </a>
+                </li>
+
+                <li class="nav-item mb-1">
+                    <a href="#" class="menu-link nav-link d-flex align-items-center gap-3 px-3 py-2">
+                        <i class="fa-solid fa-gear fa-fw"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                </li>
+
+                <li class="nav-item mb-1">
+                    <a href="sso-login.html" class="menu-link nav-link d-flex align-items-center gap-3 px-3 py-2">
+                        <i class="fa-solid fa-right-from-bracket fa-fw"></i>
+                        <span>Keluar</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- USER -->
+            <div class="sidebar-footer p-3 mt-auto">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="avatar-circle d-flex align-items-center justify-content-center">RF</div>
+                    <div class="text-truncate">
+                        <strong class="d-block text-white text-truncate" style="font-size:11px;">Riza Nidhom
+                            Fahmi</strong>
+                        <span class="d-block text-truncate"
+                            style="font-size:9px;color:rgba(255,255,255,.5);">Reviewer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================================
+             MAIN
+        ========================================================== -->
+        <div class="flex-grow-1 min-vh-100">
+
+            <!-- TOPBAR -->
+            <header class="d-flex align-items-center justify-content-between bg-white border-bottom sticky-top px-4"
+                style="height:80px;z-index:900;">
+
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-outline-secondary d-lg-none" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#sidebar" aria-controls="sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <div>
+                        <h2 class="fs-6 text-dark mb-0">Detail Review Proposal Penelitian</h2>
+                        <span class="d-block text-secondary" style="font-size:10px;">Penilaian &amp; peninjauan
+                            substansi proposal usulan</span>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center gap-3">
+                    <div class="position-relative">
+                        <button class="btn btn-outline-secondary rounded-3" type="button">
+                            <i class="fa-regular fa-bell"></i>
+                        </button>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            style="font-size:8px;">3</span>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="avatar-circle d-flex align-items-center justify-content-center">RF</div>
+                        <div class="d-none d-sm-block">
+                            <strong class="d-block" style="font-size:11px;">Riza Nidhom Fahmi</strong>
+                            <span class="text-secondary" style="font-size:9px;">Reviewer</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- CONTENT -->
+            <section class="p-4">
+
+                <!-- BREADCRUMB -->
+                <nav aria-label="breadcrumb" class="mb-3">
+                    <ol class="breadcrumb mb-0" style="font-size:11px;">
+                        <li class="breadcrumb-item"><a href="dashboard.html" class="text-decoration-none">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="penelitian-review.html" class="text-decoration-none">Daftar
+                                Penelitian - Review</a></li>
+                        <li class="breadcrumb-item active text-dark fw-semibold" aria-current="page">Detail Review</li>
+                    </ol>
+                </nav>
+
+                <!-- SECTION 1: IDENTITAS PENELITIAN -->
+                <div class="review-section-card">
+                    <div class="section-header-title">
+                        <i class="fa-solid fa-circle-info text-primary"></i> Identitas Penelitian
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label">Judul Penelitian</label>
+                            <input type="text" class="form-control"
+                                value="Analisis Pengaruh Digitalisasi UMKM terhadap Kinerja Keuangan" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Skema Penelitian</label>
+                            <input type="text" class="form-control" value="Penelitian Dosen Pemula (PDP)" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Tahun Pelaksanaan</label>
+                            <input type="text" class="form-control" value="2026" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Program Studi</label>
+                            <input type="text" class="form-control" value="Sistem Informasi" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Lama Penelitian</label>
+                            <input type="text" class="form-control" value="12 Bulan" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Total Dana</label>
+                            <input type="text" class="form-control" value="Rp 25.000.000" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Bidang Fokus</label>
+                            <input type="text" class="form-control" value="Teknologi Informasi" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: TIM PENELITI -->
+                <div class="review-section-card">
+                    <div class="section-header-title">
+                        <i class="fa-solid fa-users text-primary"></i> Tim Peneliti
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label">Ketua Peneliti</label>
+                            <input type="text" class="form-control" value="Dr. Ahmad Fauzi, S.E., M.Ak." disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Anggota Peneliti 1</label>
+                            <input type="text" class="form-control" value="Dr. Budi Santoso, M.Kom." disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Anggota Peneliti 2</label>
+                            <input type="text" class="form-control" value="Siti Rahmawati, S.E., M.M." disabled>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Mahasiswa yang Terlibat</label>
+                            <input type="text" class="form-control"
+                                value="Andi Pratama (202100123), Maya Indah (202100145)" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: SUBSTANSI PENELITIAN -->
+                <div class="review-section-card">
+                    <div class="section-header-title">
+                        <i class="fa-solid fa-file-lines text-primary"></i> Substansi Penelitian
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label">Ringkasan Penelitian</label>
+                            <textarea class="form-control" rows="3"
+                                disabled>Penelitian ini bertujuan untuk menganalisis adopsi teknologi finansial dan platform e-commerce pada UMKM serta dampaknya terhadap efisiensi dan transparansi Laporan Keuangan.</textarea>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Latar Belakang</label>
+                            <textarea class="form-control" rows="3"
+                                disabled>Perkembangan teknologi digital mengharuskan pelaku UMKM beradaptasi. Namun masih banyak hambatan dalam pencatatan keuangan secara digital yang terintegrasi.</textarea>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Tujuan Penelitian</label>
+                            <textarea class="form-control" rows="3"
+                                disabled>1. Mengetahui tingkat adopsi pencatatan digital pada UMKM.&#10;2. Mengukur pengaruh langsung terhadap akurasi laporan keuangan bulanan.</textarea>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Metode Penelitian</label>
+                            <textarea class="form-control" rows="3"
+                                disabled>Pendekatan kuantitatif dengan menyebarkan kuesioner kepada 100 sampel UMKM di Jawa Timur, dianalisis menggunakan PLS-SEM.</textarea>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Kata Kunci</label>
+                            <input type="text" class="form-control"
+                                value="Digitalisasi, UMKM, Kinerja Keuangan, Financial Technology" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 4: LUARAN PENELITIAN -->
+                <div class="review-section-card">
+                    <div class="section-header-title">
+                        <i class="fa-solid fa-award text-primary"></i> Luaran Penelitian
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Luaran Wajib</label>
+                            <input type="text" class="form-control" value="Jurnal Nasional Terakreditasi (Sinta 2/3)"
+                                disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Target Tahun</label>
+                            <input type="text" class="form-control" value="2026" disabled>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Luaran Tambahan</label>
+                            <textarea class="form-control" rows="2"
+                                disabled>Hak Cipta Modul Pelatihan Pencatatan Keuangan UMKM, HKI Software Akuntansi Sederhana.</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 5: DOKUMEN PENELITIAN -->
+                <div class="review-section-card">
+                    <div class="section-header-title">
+                        <i class="fa-solid fa-folder-open text-primary"></i> Dokumen Penelitian
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="doc-download-card d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center gap-3">
+                                    <i class="fa-solid fa-file-word text-primary fs-3"></i>
+                                    <div>
+                                        <strong class="d-block" style="font-size:12px;">Proposal Penelitian</strong>
+                                        <span class="text-secondary" style="font-size:10px;">Format: Word / Docx (MAX
+                                            10MB)</span>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-outline-primary fw-semibold" style="font-size:11px;">
+                                    <i class="fa-solid fa-download me-1"></i>Unduh
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="doc-download-card d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center gap-3">
+                                    <i class="fa-solid fa-file-excel text-success fs-3"></i>
+                                    <div>
+                                        <strong class="d-block" style="font-size:12px;">Rencana Anggaran Biaya
+                                            (RAB)</strong>
+                                        <span class="text-secondary" style="font-size:10px;">Format: Excel / Xlsx (MAX
+                                            10MB)</span>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-outline-success fw-semibold" style="font-size:11px;">
+                                    <i class="fa-solid fa-download me-1"></i>Unduh
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOTTOM ACTION BUTTONS -->
+                <!--
+                    Tombol ini berfungsi untuk mengirim hasil review akhir dari reviewer.
+                    Setelah diklik, sistem akan meminta konfirmasi dan kemudian mengembalikan user ke daftar review.
+                -->
+                <div class="d-flex align-items-center justify-content-between pt-2 mb-4">
+                    <a href="javascript:history.back()" class="btn btn-secondary px-4 fw-semibold"
+                        style="font-size:12px;">
+                        <i class="fa-solid fa-arrow-left me-2"></i>Kembali
+                    </a>
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         POPUP MODAL 1: FORMULIR PENILAIAN ADMINISTRATIF
+    ========================================================== -->
+    <div class="modal fade" id="modalPenilaianAdministratif" tabindex="-1" aria-labelledby="modalAdminLabel"
+        aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-white border-bottom py-3">
+                    <h5 class="modal-title fs-6 fw-bold text-dark" id="modalAdminLabel">
+                        FORMULIR PENILAIAN ADMINISTRATIF REVIEW PROPOSAL PENELITIAN
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body p-4">
+                    <form id="formPenilaianAdmin">
+                        <div class="row g-2 mb-4 p-3 rounded bg-light border" style="font-size: 12px;">
+                            <div class="col-md-2 fw-semibold text-secondary">Judul Penelitian</div>
+                            <div class="col-md-10 text-dark fw-medium">: Analisis Pengaruh Digitalisasi UMKM terhadap
+                                Kinerja Keuangan</div>
+                            <div class="col-md-2 fw-semibold text-secondary">Peneliti</div>
+                            <div class="col-md-10 text-dark fw-medium">: Dr. Ahmad Fauzi, S.E., M.Ak.</div>
+                        </div>
+
+                        <div class="table-responsive mb-3">
+                            <table class="table table-bordered modal-eval-table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 40px;">No.</th>
+                                        <th style="width: 140px;">Kriteria</th>
+                                        <th>Indikator Penilaian</th>
+                                        <th style="width: 80px;">Bobot</th>
+                                        <th style="width: 110px;">Skor (1-5)</th>
+                                        <th style="width: 100px;">Nilai</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center fw-bold">1.</td>
+                                        <td class="fw-semibold text-dark">Tema</td>
+                                        <td>
+                                            <ol type="a" class="ps-3 mb-0" style="line-height:1.6;">
+                                                <li>Orisinalitas tema penelitian;</li>
+                                                <li>Penelitian bukan replikasi murni;</li>
+                                                <li>Relevansi tema dengan bidang keahlian peneliti pada <i>home-base</i>
+                                                    program studi.</li>
+                                            </ol>
+                                        </td>
+                                        <td class="text-center fw-bold text-secondary" id="bobotAdmin1">50</td>
+                                        <td>
+                                            <select class="form-select form-select-sm text-center fw-semibold"
+                                                id="skorAdmin1" onchange="hitungNilaiAdmin()">
+                                                <option value="0" selected>-- Pilih --</option>
+                                                <option value="1">1 (Sangat Kurang)</option>
+                                                <option value="2">2 (Kurang)</option>
+                                                <option value="3">3 (Cukup)</option>
+                                                <option value="4">4 (Baik)</option>
+                                                <option value="5">5 (Sangat Baik)</option>
+                                            </select>
+                                        </td>
+                                        <td class="text-center fw-bold text-primary fs-6" id="nilaiAdmin1">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center fw-bold">2.</td>
+                                        <td class="fw-semibold text-dark">Format</td>
+                                        <td>
+                                            <ol type="a" class="ps-3 mb-0" style="line-height:1.6;">
+                                                <li>Kesesuaian format proposal dengan pedoman yang telah ditetapkan.
+                                                </li>
+                                            </ol>
+                                        </td>
+                                        <td class="text-center fw-bold text-secondary" id="bobotAdmin2">50</td>
+                                        <td>
+                                            <select class="form-select form-select-sm text-center fw-semibold"
+                                                id="skorAdmin2" onchange="hitungNilaiAdmin()">
+                                                <option value="0" selected>-- Pilih --</option>
+                                                <option value="1">1 (Sangat Kurang)</option>
+                                                <option value="2">2 (Kurang)</option>
+                                                <option value="3">3 (Cukup)</option>
+                                                <option value="4">4 (Baik)</option>
+                                                <option value="5">5 (Sangat Baik)</option>
+                                            </select>
+                                        </td>
+                                        <td class="text-center fw-bold text-primary fs-6" id="nilaiAdmin2">0</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="table-light">
+                                        <td colspan="3" class="text-end fw-bold">Jumlah Total</td>
+                                        <td class="text-center fw-bold">100</td>
+                                        <td></td>
+                                        <td class="text-center fw-bold text-success fs-6" id="totalNilaiAdmin">0</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <div class="form-note-box mb-4">
+                            <strong class="d-block text-dark mb-1">Keterangan:</strong>
+                            <ul class="ps-3 mb-0" style="line-height: 1.6;">
+                                <li>Setiap kriteria diberi skor 1 sampai 5 (1 = Sangat Kurang; 2 = Kurang; 3 = Cukup; 4
+                                    = Baik; 5 = Sangat Baik).</li>
+                                <li>Nilai = Bobot x Skor.</li>
+                                <li>Apabila proposal telah memenuhi syarat administratif, LP2M dapat langsung meneruskan
+                                    proposal kepada <i>reviewer</i> untuk dilakukan penilaian substantif.</li>
+                                <li>Apabila LP2M menolak proposal penelitian, LP2M wajib menyatakan alasan penolakan
+                                    pada formulir yang disediakan.</li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-white border rounded">
+                            <label class="form-label text-dark fw-bold d-block mb-2">Hasil Penilaian :</label>
+                            <div class="d-flex flex-wrap gap-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="hasilAdmin"
+                                        id="hasilAdminDiterima" value="Diterima tanpa revisi">
+                                    <label class="form-check-label fw-medium text-success"
+                                        for="hasilAdminDiterima">Diterima tanpa revisi</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="hasilAdmin" id="hasilAdminRevisi"
+                                        value="Diterima dengan Revisi">
+                                    <label class="form-check-label fw-medium text-warning text-dark"
+                                        for="hasilAdminRevisi">Diterima dengan Revisi</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="hasilAdmin"
+                                        id="hasilAdminDitolak" value="Ditolak">
+                                    <label class="form-check-label fw-medium text-danger"
+                                        for="hasilAdminDitolak">Ditolak</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold text-dark">Saran/Masukan/Rekomendasi <i>(Jika Revisi)</i>
+                                :</label>
+                            <textarea class="form-control" rows="3"
+                                placeholder="Tuliskan poin-poin masukan atau rekomendasi revisi..."
+                                style="font-size: 12px;"></textarea>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-white border rounded">
+                            <label class="form-label fw-bold text-dark d-block mb-2">Alasan Penolakan Yang Dipilih
+                                <i>(Jika Ditolak)</i> :</label>
+
+                            <div class="mb-2">
+                                <span class="fw-semibold d-block text-secondary mb-1" style="font-size:11.5px;">1. Tema
+                                    :</span>
+                                <div class="ps-3 d-flex flex-column gap-1" style="font-size: 11.5px;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="alasanTema1">
+                                        <label class="form-check-label" for="alasanTema1">a. Tema sudah banyak
+                                            diteliti;</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="alasanTema2">
+                                        <label class="form-check-label" for="alasanTema2">b. Penelitian merupakan
+                                            replikasi murni tanpa pengembangan;</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="alasanTema3">
+                                        <label class="form-check-label" for="alasanTema3">c. Tema penelitian tidak
+                                            relevan dengan bidang keahlian peneliti pada <i>home base</i> program
+                                            studi.</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-2">
+                                <span class="fw-semibold d-block text-secondary mb-1" style="font-size:11.5px;">2.
+                                    Format :</span>
+                                <div class="ps-3" style="font-size: 11.5px;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="alasanFormat1">
+                                        <label class="form-check-label" for="alasanFormat1">d. Format proposal tidak
+                                            sesuai dengan pedoman yang telah ditetapkan.</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="fw-semibold text-secondary mb-1 d-block" style="font-size:11.5px;">3.
+                                    Lainnya :</label>
+                                <input type="text" class="form-control form-control-sm"
+                                    placeholder="Tuliskan alasan penolakan lainnya..." style="font-size:12px;">
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-end text-center mt-4">
+                            <div class="col-md-4">
+                                <p class="mb-1" style="font-size: 11px;">Surabaya, 31 Agustus 2026</p>
+                                <p class="mb-5 fw-semibold" style="font-size: 11px;">Kepala LP2M,</p>
+                                <strong class="d-block text-decoration-underline" style="font-size: 12px;">Dr. Nur
+                                    Laily, M.Si.</strong>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-secondary px-4 fw-semibold" data-bs-dismiss="modal"
+                        style="font-size:12px;">
+                        <i class="fa-solid fa-arrow-left me-1"></i>Kembali
+                    </button>
+                    <button type="button" class="btn btn-primary px-4 fw-semibold" onclick="simpanFormulirAdmin()"
+                        style="font-size:12px;">
+                        <i class="fa-solid fa-floppy-disk me-1"></i>Simpan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         POPUP MODAL 2: FORMULIR PENILAIAN SUBSTANTIF
+    ========================================================== -->
+    <div class="modal fade" id="modalPenilaianSubstantif" tabindex="-1" aria-labelledby="modalSubstantifLabel"
+        aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-white border-bottom py-3">
+                    <h5 class="modal-title fs-6 fw-bold text-dark" id="modalSubstantifLabel">
+                        FORMULIR PENILAIAN SUBSTANTIF REVIEW PROPOSAL PENELITIAN
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body p-4">
+                    <form id="formPenilaianSubstantif">
+                        <div class="row g-2 mb-4 p-3 rounded bg-light border" style="font-size: 12px;">
+                            <div class="col-md-2 fw-semibold text-secondary">Judul Penelitian</div>
+                            <div class="col-md-10 text-dark fw-medium">: Analisis Pengaruh Digitalisasi UMKM terhadap
+                                Kinerja Keuangan</div>
+                            <div class="col-md-2 fw-semibold text-secondary">Peneliti</div>
+                            <div class="col-md-10 text-dark fw-medium">: Dr. Ahmad Fauzi, S.E., M.Ak.</div>
+                        </div>
+
+                        <!-- TABEL PENILAIAN SUBSTANTIF -->
+                        <div class="table-responsive mb-3">
+                            <table class="table table-bordered modal-eval-table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 40px;">No.</th>
+                                        <th style="width: 170px;">Kriteria</th>
+                                        <th>Indikator Penilaian</th>
+                                        <th style="width: 70px;">Bobot</th>
+                                        <th style="width: 110px;">Skor (1-5)</th>
+                                        <th style="width: 90px;">Nilai</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center fw-bold">1.</td>
+                                        <td class="fw-semibold text-dark">Latar belakang penelitian</td>
+                                        <td>Relevansi isu akademik dan isu empiris yang melatarbelakangi penelitian</td>
+                                        <td class="text-center fw-bold text-secondary" id="bobotSub1">20</td>
+                                        <td>
+                                            <select class="form-select form-select-sm text-center fw-semibold"
+                                                id="skorSub1" onchange="hitungNilaiSubstantif()">
+                                                <option value="0" selected>-- Pilih --</option>
+                                                <option value="1">1 (Sangat Kurang)</option>
+                                                <option value="2">2 (Kurang)</option>
+                                                <option value="3">3 (Cukup)</option>
+                                                <option value="4">4 (Baik)</option>
+                                                <option value="5">5 (Sangat Baik)</option>
+                                            </select>
+                                        </td>
+                                        <td class="text-center fw-bold text-primary fs-6" id="nilaiSub1">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center fw-bold">2.</td>
+                                        <td class="fw-semibold text-dark">Perumusan masalah</td>
+                                        <td>Ketajaman perumusan masalah dan tujuan penelitian</td>
+                                        <td class="text-center fw-bold text-secondary" id="bobotSub2">20</td>
+                                        <td>
+                                            <select class="form-select form-select-sm text-center fw-semibold"
+                                                id="skorSub2" onchange="hitungNilaiSubstantif()">
+                                                <option value="0" selected>-- Pilih --</option>
+                                                <option value="1">1 (Sangat Kurang)</option>
+                                                <option value="2">2 (Kurang)</option>
+                                                <option value="3">3 (Cukup)</option>
+                                                <option value="4">4 (Baik)</option>
+                                                <option value="5">5 (Sangat Baik)</option>
+                                            </select>
+                                        </td>
+                                        <td class="text-center fw-bold text-primary fs-6" id="nilaiSub2">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center fw-bold">3.</td>
+                                        <td class="fw-semibold text-dark">Manfaat penelitian</td>
+                                        <td>Kontribusi hasil penelitian pada pengembangan teori, praktik, dan kebijakan
+                                        </td>
+                                        <td class="text-center fw-bold text-secondary" id="bobotSub3">20</td>
+                                        <td>
+                                            <select class="form-select form-select-sm text-center fw-semibold"
+                                                id="skorSub3" onchange="hitungNilaiSubstantif()">
+                                                <option value="0" selected>-- Pilih --</option>
+                                                <option value="1">1 (Sangat Kurang)</option>
+                                                <option value="2">2 (Kurang)</option>
+                                                <option value="3">3 (Cukup)</option>
+                                                <option value="4">4 (Baik)</option>
+                                                <option value="5">5 (Sangat Baik)</option>
+                                            </select>
+                                        </td>
+                                        <td class="text-center fw-bold text-primary fs-6" id="nilaiSub3">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center fw-bold">4.</td>
+                                        <td class="fw-semibold text-dark">Tinjauan pustaka</td>
+                                        <td>Relevansi, kemutakhiran, dan kecukupan pustaka</td>
+                                        <td class="text-center fw-bold text-secondary" id="bobotSub4">20</td>
+                                        <td>
+                                            <select class="form-select form-select-sm text-center fw-semibold"
+                                                id="skorSub4" onchange="hitungNilaiSubstantif()">
+                                                <option value="0" selected>-- Pilih --</option>
+                                                <option value="1">1 (Sangat Kurang)</option>
+                                                <option value="2">2 (Kurang)</option>
+                                                <option value="3">3 (Cukup)</option>
+                                                <option value="4">4 (Baik)</option>
+                                                <option value="5">5 (Sangat Baik)</option>
+                                            </select>
+                                        </td>
+                                        <td class="text-center fw-bold text-primary fs-6" id="nilaiSub4">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center fw-bold">5.</td>
+                                        <td class="fw-semibold text-dark">Metodologi penelitian</td>
+                                        <td>Ketepatan metode penelitian yang digunakan</td>
+                                        <td class="text-center fw-bold text-secondary" id="bobotSub5">20</td>
+                                        <td>
+                                            <select class="form-select form-select-sm text-center fw-semibold"
+                                                id="skorSub5" onchange="hitungNilaiSubstantif()">
+                                                <option value="0" selected>-- Pilih --</option>
+                                                <option value="1">1 (Sangat Kurang)</option>
+                                                <option value="2">2 (Kurang)</option>
+                                                <option value="3">3 (Cukup)</option>
+                                                <option value="4">4 (Baik)</option>
+                                                <option value="5">5 (Sangat Baik)</option>
+                                            </select>
+                                        </td>
+                                        <td class="text-center fw-bold text-primary fs-6" id="nilaiSub5">0</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="table-light">
+                                        <td colspan="3" class="text-end fw-bold">Jumlah Total</td>
+                                        <td class="text-center fw-bold">100</td>
+                                        <td></td>
+                                        <td class="text-center fw-bold text-success fs-6" id="totalNilaiSubstantif">0
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <!-- KETERANGAN SUBSTANTIF -->
+                        <div class="form-note-box mb-4">
+                            <strong class="d-block text-dark mb-1">Keterangan:</strong>
+                            <ol type="a" class="ps-3 mb-0" style="line-height: 1.6;">
+                                <li>Setiap kriteria diberi skor 1 sampai 5 (1 = Sangat Kurang; 2 = Kurang; 3 = Cukup; 4
+                                    = Baik; 5 = Sangat Baik).</li>
+                                <li>Nilai = Bobot x Skor.</li>
+                                <li>Skor minimal <i>(passing grade)</i>: <b>300</b></li>
+                            </ol>
+                        </div>
+
+                        <!-- HASIL PENILAIAN -->
+                        <div class="mb-4 p-3 bg-white border rounded">
+                            <label class="form-label text-dark fw-bold d-block mb-2">Hasil Penilaian :</label>
+                            <div class="d-flex flex-wrap gap-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="hasilSubstantif"
+                                        id="hasilSubDiterima" value="Diterima tanpa revisi">
+                                    <label class="form-check-label fw-medium text-success"
+                                        for="hasilSubDiterima">Diterima tanpa revisi</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="hasilSubstantif"
+                                        id="hasilSubRevisi" value="Diterima dengan Revisi">
+                                    <label class="form-check-label fw-medium text-warning text-dark"
+                                        for="hasilSubRevisi">Diterima dengan Revisi</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="hasilSubstantif"
+                                        id="hasilSubDitolak" value="Ditolak">
+                                    <label class="form-check-label fw-medium text-danger"
+                                        for="hasilSubDitolak">Ditolak</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SARAN / REKOMENDASI -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold text-dark">Saran/Masukan/Rekomendasi <i>(Jika Revisi)</i>
+                                :</label>
+                            <textarea class="form-control" rows="3"
+                                placeholder="Tuliskan saran/masukan/rekomendasi substantif..."
+                                style="font-size: 12px;"></textarea>
+                        </div>
+
+                        <!-- ALASAN PENOLAKAN SUBSTANTIF -->
+                        <div class="mb-4 p-3 bg-white border rounded">
+                            <label class="form-label fw-bold text-dark d-block mb-2">Alasan Penolakan Yang Dipilih
+                                <i>(Jika Ditolak)</i> :</label>
+
+                            <div class="mb-2">
+                                <span class="fw-semibold d-block text-secondary mb-1" style="font-size:11.5px;">1. Latar
+                                    Belakang Penelitian :</span>
+                                <div class="ps-3 d-flex flex-column gap-1" style="font-size: 11.5px;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="alasanSubLatar1">
+                                        <label class="form-check-label" for="alasanSubLatar1">a. Isu akademik tidak
+                                            relevan dengan penelitian ;</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="alasanSubLatar2">
+                                        <label class="form-check-label" for="alasanSubLatar2">b. Isu empiris tidak
+                                            mendukung penelitian</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-2">
+                                <span class="fw-semibold d-block text-secondary mb-1" style="font-size:11.5px;">2.
+                                    Perumusan Masalah :</span>
+                                <div class="ps-3 d-flex flex-column gap-1" style="font-size: 11.5px;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="alasanSubRumus1">
+                                        <label class="form-check-label" for="alasanSubRumus1">c. Perumusan masalah
+                                            lemah, kurang mengarah;</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="alasanSubRumus2">
+                                        <label class="form-check-label" for="alasanSubRumus2">d. Tujuan penelitian tidak
+                                            jelas / terlalu dangkal</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-2">
+                                <span class="fw-semibold d-block text-secondary mb-1" style="font-size:11.5px;">3.
+                                    Manfaat Penelitian :</span>
+                                <div class="ps-3 d-flex flex-column gap-1" style="font-size: 11.5px;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="alasanSubManfaat1">
+                                        <label class="form-check-label" for="alasanSubManfaat1">e. Penelitian tidak
+                                            memberikan kontribusi pengembangan teori;</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="alasanSubManfaat2">
+                                        <label class="form-check-label" for="alasanSubManfaat2">f. Penelitian tidak
+                                            memberikan kontribusi pengembangan praktik, dan/atau kebijakan.</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-2">
+                                <span class="fw-semibold d-block text-secondary mb-1" style="font-size:11.5px;">4.
+                                    Tinjauan Pustaka :</span>
+                                <div class="ps-3 d-flex flex-column gap-1" style="font-size: 11.5px;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="alasanSubPustaka1">
+                                        <label class="form-check-label" for="alasanSubPustaka1">g. Bahan kepustakaan
+                                            kurang menunjang penelitian;</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="alasanSubPustaka2">
+                                        <label class="form-check-label" for="alasanSubPustaka2">h. Pustaka tidak
+                                            relevan, kurang mutakhir, dan umumnya bukan artikel jurnal ilmiah;</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="alasanSubPustaka3">
+                                        <label class="form-check-label" for="alasanSubPustaka3">i. Penyusunan daftar
+                                            pustaka kurang baik.</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-2">
+                                <span class="fw-semibold d-block text-secondary mb-1" style="font-size:11.5px;">5.
+                                    Metodologi Penelitian :</span>
+                                <div class="ps-3" style="font-size: 11.5px;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="alasanSubMetode1">
+                                        <label class="form-check-label" for="alasanSubMetode1">j. Metode penelitian
+                                            kurang tepat dan kurang rinci sehingga langkah-langkah penelitian yang
+                                            dilakukan tidak jelas.</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="fw-semibold text-secondary mb-1 d-block" style="font-size:11.5px;">6.
+                                    Lainnya (Uraikan) :</label>
+                                <input type="text" class="form-control form-control-sm"
+                                    placeholder="Tuliskan uraian alasan lainnya..." style="font-size:12px;">
+                            </div>
+                        </div>
+
+                        <!-- TANDA TANGAN / PENGESAHAN INFO -->
+                        <div class="row justify-content-end text-center mt-4">
+                            <div class="col-md-4">
+                                <p class="mb-1" style="font-size: 11px;">Surabaya, 31 Agustus 2026</p>
+                                <p class="mb-5 fw-semibold" style="font-size: 11px;">Reviewer,</p>
+                                <strong class="d-block text-decoration-underline" style="font-size: 12px;">Prof. Dr. Nur
+                                    Fadjrih Asyik, S.E., M.Si., Ak., CA</strong>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-secondary px-4 fw-semibold" data-bs-dismiss="modal"
+                        style="font-size:12px;">
+                        <i class="fa-solid fa-arrow-left me-1"></i>Kembali
+                    </button>
+                    <button type="button" class="btn btn-primary px-4 fw-semibold" onclick="simpanFormulirSubstantif()"
+                        style="font-size:12px;">
+                        <i class="fa-solid fa-floppy-disk me-1"></i>Simpan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Perhitungan otomatis nilai Administratif (Nilai = Bobot x Skor)
+        function hitungNilaiAdmin() {
+            const bobot1 = parseFloat(document.getElementById('bobotAdmin1').innerText) || 0;
+            const skor1 = parseFloat(document.getElementById('skorAdmin1').value) || 0;
+            const nilai1 = bobot1 * skor1;
+            document.getElementById('nilaiAdmin1').innerText = nilai1;
+
+            const bobot2 = parseFloat(document.getElementById('bobotAdmin2').innerText) || 0;
+            const skor2 = parseFloat(document.getElementById('skorAdmin2').value) || 0;
+            const nilai2 = bobot2 * skor2;
+            document.getElementById('nilaiAdmin2').innerText = nilai2;
+
+            document.getElementById('totalNilaiAdmin').innerText = nilai1 + nilai2;
+        }
+
+        // Perhitungan otomatis nilai Substantif (Nilai = Bobot x Skor)
+        function hitungNilaiSubstantif() {
+            let total = 0;
+            for (let i = 1; i <= 5; i++) {
+                const bobot = parseFloat(document.getElementById('bobotSub' + i).innerText) || 0;
+                const skor = parseFloat(document.getElementById('skorSub' + i).value) || 0;
+                const nilai = bobot * skor;
+                document.getElementById('nilaiSub' + i).innerText = nilai;
+                total += nilai;
+            }
+
+            const totalEl = document.getElementById('totalNilaiSubstantif');
+            totalEl.innerText = total;
+
+            // Highlight status passing grade
+            if (total >= 300) {
+                totalEl.className = 'text-center fw-bold text-success fs-6';
+            } else if (total > 0) {
+                totalEl.className = 'text-center fw-bold text-danger fs-6';
+            }
+        }
+
+        // Fungsi Simpan Formulir Admin
+        function simpanFormulirAdmin() {
+            alert("Formulir penilaian administratif berhasil disimpan!");
+            const modalEl = document.getElementById('modalPenilaianAdministratif');
+            const modalInstance = bootstrap.Modal.getInstance(modalEl);
+            if (modalInstance) modalInstance.hide();
+        }
+
+        // Fungsi Simpan Formulir Substantif
+        function simpanFormulirSubstantif() {
+            alert("Formulir penilaian substantif berhasil disimpan!");
+            const modalEl = document.getElementById('modalPenilaianSubstantif');
+            const modalInstance = bootstrap.Modal.getInstance(modalEl);
+            if (modalInstance) modalInstance.hide();
+        }
+
+        function submitReview() {
+            const confirmSubmit = confirm("Apakah Anda yakin ingin mengirim hasil review proposal ini?");
+            if (confirmSubmit) {
+                alert("Hasil review berhasil disimpan dan dikirim.");
+                window.location.href = "penelitian-review.html";
+            }
+        }
+    </script>
+</body>
+
+</html>
