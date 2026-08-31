@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Penelitian - Review | SIPPM STIESIA</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+
+    <style>
+        :root {
+            --brand-navy: #062b5c;
+            --brand-navy-light: #0a4b96;
+            --brand-blue: #2563eb;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #f5f7fb;
+        }
+
+        /* ---------- Sidebar ---------- */
+        #sidebar {
+            --bs-offcanvas-bg: var(--brand-navy);
+            --bs-offcanvas-color: #fff;
+            width: 260px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--brand-navy) !important;
+            color: #fff;
+        }
+
+        @media (min-width: 992px) {
+            #sidebar {
+                flex-shrink: 0;
+            }
+        }
+
+        .sidebar-brand-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: #fff;
+            color: var(--brand-navy);
+        }
+
+        .menu-title {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, .4) !important;
+        }
+
+        .menu-link,
+        .menu-link span,
+        .menu-link i {
+            color: rgba(255, 255, 255, .72) !important;
+        }
+
+        .menu-link {
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .menu-link i.fa-fw {
+            font-size: 15px;
+        }
+
+        .menu-link:hover,
+        .menu-link:hover span,
+        .menu-link:hover i {
+            background: rgba(255, 255, 255, .08);
+            color: #fff !important;
+        }
+
+        .menu-link.active,
+        .menu-link.active span,
+        .menu-link.active i {
+            background: var(--brand-blue);
+            color: #fff !important;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, .25);
+        }
+
+        .menu-link .arrow {
+            margin-left: auto;
+            font-size: 10px;
+            transition: transform .2s;
+        }
+
+        .menu-link[aria-expanded="true"] .arrow {
+            transform: rotate(180deg);
+        }
+
+        .submenu a {
+            color: rgba(255, 255, 255, .6) !important;
+            font-size: 11px;
+            border-radius: 6px;
+        }
+
+        .submenu a:hover {
+            color: #fff !important;
+            background: rgba(255, 255, 255, .06);
+        }
+
+        /* active submenu item (current page) */
+        .submenu a.active {
+            color: #fff !important;
+            background: rgba(255, 255, 255, .14);
+            font-weight: 600;
+        }
+
+        .sidebar-footer {
+            background: rgba(0, 0, 0, .1);
+            border-top: 1px solid rgba(255, 255, 255, .08);
+            color: #fff;
+        }
+
+        .avatar-circle {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #dbeafe;
+            color: var(--brand-blue);
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        /* ---------- Table page ---------- */
+        .table > thead > tr > th {
+            text-transform: uppercase;
+            letter-spacing: .4px;
+            border-bottom-width: 1px;
+        }
+
+        .table > tbody > tr > td {
+            font-size: 12px;
+            vertical-align: middle;
+        }
+
+        .title-cell {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .subtitle-cell {
+            font-size: 10.5px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="d-flex">
+
+        <!-- =========================================================
+             SIDEBAR
+        ========================================================== -->
+        <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="sidebar">
+
+            <!-- LOGO -->
+            <div class="d-flex align-items-center gap-3 p-3 border-bottom border-light border-opacity-10"
+                style="height:80px;">
+                <div class="sidebar-brand-icon d-flex align-items-center justify-content-center fs-5">
+                    <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <div>
+                    <h3 class="fs-6 fw-bold mb-0">SIPPM STIESIA</h3>
+                    <span class="d-block" style="font-size:9px;color:rgba(255,255,255,.65);">Sistem Penelitian &amp;
+                        Pengabdian</span>
+                </div>
+                <button type="button" class="btn-close btn-close-white ms-auto d-lg-none" data-bs-dismiss="offcanvas"
+                    data-bs-target="#sidebar" aria-label="Close"></button>
+            </div>
+
+            <!-- MENU -->
+            <ul class="nav flex-column p-3" style="--bs-nav-link-padding-y:0;">
+
+                <div class="menu-title text-uppercase px-2 mb-2 mt-2">Menu Utama</div>
+
+                <li class="nav-item mb-1">
+                    <a href="dashboard.html" class="menu-link nav-link d-flex align-items-center gap-3 px-3 py-2">
+                        <i class="fa-solid fa-gauge-high fa-fw"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="nav-item mb-1">
+                    <a href="#" class="menu-link nav-link d-flex align-items-center gap-3 px-3 py-2"
+                        data-bs-toggle="collapse" data-bs-target="#penelitianSubmenu" aria-expanded="true"
+                        aria-controls="penelitianSubmenu">
+                        <i class="fa-solid fa-flask fa-fw"></i>
+                        <span>Penelitian</span>
+                        <i class="fa-solid fa-chevron-down arrow"></i>
+                    </a>
+                    <div class="collapse show submenu ps-4 ms-2" id="penelitianSubmenu">
+                        <a href="penelitian-review.html" class="d-block px-2 py-2 active">Daftar Penelitian - Review</a>
+                        <a href="#" class="d-block px-2 py-2">Daftar Penelitian - Accepted</a>
+                    </div>
+                </li>
+
+                <li class="nav-item mb-1">
+                    <a href="#" class="menu-link nav-link d-flex align-items-center gap-3 px-3 py-2"
+                        data-bs-toggle="collapse" data-bs-target="#pengabdianSubmenu" aria-expanded="false"
+                        aria-controls="pengabdianSubmenu">
+                        <i class="fa-solid fa-hand-holding-heart fa-fw"></i>
+                        <span>Pengabdian</span>
+                        <i class="fa-solid fa-chevron-down arrow"></i>
+                    </a>
+                    <div class="collapse submenu ps-4 ms-2" id="pengabdianSubmenu">
+                        <a href="#" class="d-block px-2 py-2">Daftar Pengabdian - Review</a>
+                        <a href="#" class="d-block px-2 py-2">Daftar Pengabdian - Accepted</a>
+                    </div>
+                </li>
+
+
+                <div class="menu-title text-uppercase px-2 mb-2 mt-3">Sistem</div>
+
+                <li class="nav-item mb-1">
+                    <a href="#" class="menu-link nav-link d-flex align-items-center gap-3 px-3 py-2">
+                        <i class="fa-solid fa-user fa-fw"></i>
+                        <span>Profil Saya</span>
+                    </a>
+                </li>
+
+                <li class="nav-item mb-1">
+                    <a href="#" class="menu-link nav-link d-flex align-items-center gap-3 px-3 py-2">
+                        <i class="fa-solid fa-gear fa-fw"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                </li>
+
+                <li class="nav-item mb-1">
+                    <a href="sso-login.html" class="menu-link nav-link d-flex align-items-center gap-3 px-3 py-2">
+                        <i class="fa-solid fa-right-from-bracket fa-fw"></i>
+                        <span>Keluar</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- USER -->
+            <div class="sidebar-footer p-3 mt-auto">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="avatar-circle d-flex align-items-center justify-content-center">RF</div>
+                    <div class="text-truncate">
+                        <strong class="d-block text-white text-truncate" style="font-size:11px;">Riza Nidhom
+                            Fahmi</strong>
+                        <span class="d-block text-truncate"
+                            style="font-size:9px;color:rgba(255,255,255,.5);">Reviewer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================================
+             MAIN
+        ========================================================== -->
+        <div class="flex-grow-1 min-vh-100">
+
+            <!-- TOPBAR -->
+            <header class="d-flex align-items-center justify-content-between bg-white border-bottom sticky-top px-4"
+                style="height:80px;z-index:900;">
+
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-outline-secondary d-lg-none" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#sidebar" aria-controls="sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <div>
+                        <h2 class="fs-6 text-dark mb-0">Daftar Penelitian - Review</h2>
+                        <span class="d-block text-secondary" style="font-size:10px;">Tinjau proposal penelitian yang
+                            menunggu review Anda</span>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center gap-3">
+                    <div class="position-relative">
+                        <button class="btn btn-outline-secondary rounded-3" type="button">
+                            <i class="fa-regular fa-bell"></i>
+                        </button>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            style="font-size:8px;">3</span>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="avatar-circle d-flex align-items-center justify-content-center">RF</div>
+                        <div class="d-none d-sm-block">
+                            <strong class="d-block" style="font-size:11px;">Riza Nidhom Fahmi</strong>
+                            <span class="text-secondary" style="font-size:9px;">Reviewer</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- CONTENT -->
+            <section class="p-4">
+
+                <!-- BREADCRUMB -->
+                <nav aria-label="breadcrumb" class="mb-3">
+                    <ol class="breadcrumb mb-0" style="font-size:11px;">
+                        <li class="breadcrumb-item"><a href="dashboard.html" class="text-decoration-none">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item text-secondary">Penelitian</li>
+                        <li class="breadcrumb-item active text-dark fw-semibold" aria-current="page">Daftar Penelitian -
+                            Review</li>
+                    </ol>
+                </nav>
+
+                <div class="card border">
+                    <div class="card-header bg-white">
+                        <h3 class="fs-6 text-dark mb-0">Daftar Penelitian - Review</h3>
+                    </div>
+
+                    <div class="card-body">
+
+                        <!-- FILTER & SEARCH -->
+                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <label for="filterTahun" class="text-secondary mb-0"
+                                    style="font-size:12px;">Tahun</label>
+                                <select id="filterTahun" class="form-select form-select-sm" style="width:130px;">
+                                    <option value="">Semua Tahun</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group input-group-sm" style="max-width:300px;">
+                                <span class="input-group-text bg-white">
+                                    <i class="fa-solid fa-magnifying-glass text-secondary"></i>
+                                </span>
+                                <input type="text" id="searchInput" class="form-control"
+                                    placeholder="Cari judul penelitian atau ketua...">
+                            </div>
+                        </div>
+
+                        <!-- TABLE -->
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead>
+                                    <tr class="text-secondary" style="font-size:10.5px;">
+                                        <th style="width:56px;">No</th>
+                                        <th>Nama Penelitian</th>
+                                        <th style="width:220px;">Ketua Peneliti</th>
+                                        <th style="width:150px;">Status</th>
+                                        <th style="width:110px;" class="text-end">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableBody"></tbody>
+                            </table>
+                        </div>
+
+                        <!-- EMPTY STATE -->
+                        <div id="emptyState" class="text-center text-secondary py-5 d-none">
+                            <i class="fa-regular fa-folder-open fs-3 d-block mb-2"></i>
+                            <span style="font-size:12px;">Tidak ada penelitian yang cocok dengan pencarian /
+                                filter.</span>
+                        </div>
+                    </div>
+
+                    <!-- FOOTER: PAGINATION -->
+                    <div class="card-footer bg-white d-flex flex-wrap align-items-center justify-content-between gap-2">
+                        <span id="paginationInfo" class="text-secondary" style="font-size:11px;"></span>
+                        <ul class="pagination pagination-sm mb-0" id="paginationControls"></ul>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS bundle (handles offcanvas sidebar + collapse submenus) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Highlight the clicked top-level menu item (skip links that only toggle a submenu)
+        document.querySelectorAll('.menu-link').forEach(function (link) {
+            link.addEventListener('click', function () {
+                if (this.getAttribute('data-bs-toggle') === 'collapse') return;
+                document.querySelectorAll('.menu-link').forEach(function (el) {
+                    el.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // ---------------------------------------------------------------
+        // DUMMY DATA — replace with data from the backend / API
+        // ---------------------------------------------------------------
+        const researchData = [
+            { judul: "Analisis Pengaruh Digitalisasi UMKM terhadap Kinerja Keuangan", ketua: "Dr. Ahmad Fauzi, S.E., M.Ak.", tahun: 2026, status: "Menunggu Review" },
+            { judul: "Model Prediksi Risiko Kredit Menggunakan Machine Learning pada Perbankan Syariah", ketua: "Dr. Siti Rahmawati, S.E., M.M.", tahun: 2026, status: "Sedang Direview" },
+            { judul: "Pengaruh Literasi Keuangan terhadap Keputusan Investasi Generasi Z", ketua: "Riza Nidhom Fahmi, S.E., M.Ak.", tahun: 2026, status: "Menunggu Review" },
+            { judul: "Efektivitas Penerapan Good Corporate Governance pada BUMN Sektor Energi", ketua: "Dr. Bambang Supriyadi, S.E., M.M.", tahun: 2025, status: "Revisi Diperlukan" },
+            { judul: "Analisis Faktor-Faktor yang Mempengaruhi Tax Avoidance pada Perusahaan Manufaktur", ketua: "Dra. Endang Kusumawati, M.Si., Ak.", tahun: 2025, status: "Selesai Direview" },
+            { judul: "Peran Fintech Lending dalam Meningkatkan Inklusi Keuangan UMKM di Jawa Timur", ketua: "Dr. Hendra Setiawan, S.E., M.Sc.", tahun: 2025, status: "Menunggu Review" },
+            { judul: "Pengembangan Model Bisnis Berkelanjutan bagi Koperasi Syariah", ketua: "Dr. Nur Aisyah, S.E., M.Ak.", tahun: 2025, status: "Sedang Direview" },
+            { judul: "Analisis Dampak Pandemi terhadap Perilaku Konsumen E-Commerce", ketua: "Riza Nidhom Fahmi, S.E., M.Ak.", tahun: 2024, status: "Selesai Direview" },
+            { judul: "Studi Komparatif Kinerja Reksadana Syariah dan Konvensional", ketua: "Dr. Wahyu Prasetyo, S.E., M.M.", tahun: 2024, status: "Revisi Diperlukan" },
+            { judul: "Pengaruh Kualitas Audit terhadap Integritas Laporan Keuangan", ketua: "Dra. Endang Kusumawati, M.Si., Ak.", tahun: 2024, status: "Menunggu Review" },
+            { judul: "Implementasi Balanced Scorecard sebagai Alat Ukur Kinerja Perguruan Tinggi", ketua: "Dr. Ahmad Fauzi, S.E., M.Ak.", tahun: 2024, status: "Selesai Direview" },
+            { judul: "Analisis Kesenjangan Ekspektasi Auditor pada Kasus Fraud Perbankan", ketua: "Dr. Hendra Setiawan, S.E., M.Sc.", tahun: 2023, status: "Selesai Direview" },
+            { judul: "Peran Modal Sosial dalam Keberlangsungan Usaha Mikro Pasca Pandemi", ketua: "Dr. Nur Aisyah, S.E., M.Ak.", tahun: 2023, status: "Sedang Direview" },
+            { judul: "Determinan Struktur Modal pada Perusahaan Sektor Konsumer di BEI", ketua: "Dr. Bambang Supriyadi, S.E., M.M.", tahun: 2023, status: "Menunggu Review" },
+        ];
+
+        const PAGE_SIZE = 6;
+        let currentPage = 1;
+
+        const tableBody = document.getElementById('tableBody');
+        const emptyState = document.getElementById('emptyState');
+        const paginationInfo = document.getElementById('paginationInfo');
+        const paginationControls = document.getElementById('paginationControls');
+        const filterTahun = document.getElementById('filterTahun');
+        const searchInput = document.getElementById('searchInput');
+
+        // Populate the year filter dynamically from the data
+        [...new Set(researchData.map(r => r.tahun))].sort((a, b) => b - a).forEach(function (year) {
+            const opt = document.createElement('option');
+            opt.value = year;
+            opt.textContent = year;
+            filterTahun.appendChild(opt);
+        });
+
+        function statusBadgeClass(status) {
+            switch (status) {
+                case 'Menunggu Review': return 'text-bg-warning';
+                case 'Sedang Direview': return 'text-bg-primary';
+                case 'Revisi Diperlukan': return 'text-bg-danger';
+                case 'Selesai Direview': return 'text-bg-success';
+                default: return 'text-bg-secondary';
+            }
+        }
+
+        function getFilteredData() {
+            const year = filterTahun.value;
+            const query = searchInput.value.trim().toLowerCase();
+
+            return researchData.filter(function (item) {
+                const matchesYear = !year || String(item.tahun) === year;
+                const matchesQuery = !query ||
+                    item.judul.toLowerCase().includes(query) ||
+                    item.ketua.toLowerCase().includes(query);
+                return matchesYear && matchesQuery;
+            });
+        }
+
+        function renderTable() {
+            const filtered = getFilteredData();
+            const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+            currentPage = Math.min(currentPage, totalPages);
+
+            const start = (currentPage - 1) * PAGE_SIZE;
+            const pageItems = filtered.slice(start, start + PAGE_SIZE);
+
+            tableBody.innerHTML = '';
+            emptyState.classList.toggle('d-none', filtered.length > 0);
+
+            pageItems.forEach(function (item, index) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="text-secondary">${start + index + 1}</td>
+                    <td>
+                        <span class="d-block title-cell">${item.judul}</span>
+                        <span class="d-block subtitle-cell">Tahun ${item.tahun}</span>
+                    </td>
+                    <td>${item.ketua}</td>
+                    <td><span class="badge rounded-pill ${statusBadgeClass(item.status)}" style="font-size:10px;">${item.status}</span></td>
+                    <td class="text-end">
+                        <a href="#" class="btn btn-sm btn-outline-primary">
+                            <i class="fa-regular fa-eye me-1"></i>Review
+                        </a>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
+
+            paginationInfo.textContent = filtered.length
+                ? `Menampilkan ${start + 1}-${Math.min(start + PAGE_SIZE, filtered.length)} dari ${filtered.length} penelitian`
+                : 'Menampilkan 0 dari 0 penelitian';
+
+            renderPagination(totalPages);
+        }
+
+        function renderPagination(totalPages) {
+            paginationControls.innerHTML = '';
+
+            function addItem(label, page, opts = {}) {
+                const li = document.createElement('li');
+                li.className = 'page-item' + (opts.disabled ? ' disabled' : '') + (opts.active ? ' active' : '');
+                const a = document.createElement('a');
+                a.className = 'page-link';
+                a.href = '#';
+                a.innerHTML = label;
+                if (!opts.disabled && !opts.active) {
+                    a.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        currentPage = page;
+                        renderTable();
+                    });
+                } else {
+                    a.addEventListener('click', function (e) { e.preventDefault(); });
+                }
+                li.appendChild(a);
+                paginationControls.appendChild(li);
+            }
+
+            addItem('&laquo;', currentPage - 1, { disabled: currentPage === 1 });
+            for (let p = 1; p <= totalPages; p++) {
+                addItem(String(p), p, { active: p === currentPage });
+            }
+            addItem('&raquo;', currentPage + 1, { disabled: currentPage === totalPages });
+        }
+
+        filterTahun.addEventListener('change', function () { currentPage = 1; renderTable(); });
+        searchInput.addEventListener('input', function () { currentPage = 1; renderTable(); });
+
+        renderTable();
+    </script>
+
+</body>
+
+</html>
